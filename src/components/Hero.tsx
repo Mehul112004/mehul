@@ -8,11 +8,11 @@ export function Hero() {
         <span className={styles.status}>Status: Operational</span>
         
         <h1 className={styles.title}>
-          SYSTEM ARCHITECT & <br />FULL STACK ENGINEER
+          MOBILE & <br />FULL STACK DEVELOPER
         </h1>
         
         <p className={styles.description}>
-          &gt; engineering mission-critical systems with mathematical precision and structural integrity. specializing in high-performance backends and low-latency architectures.
+          &gt; engineering robust mobile applications and scalable backend architectures. specializing in react native, next.js, and spring boot with a track record of scaling platforms to 17,000+ active users.
         </p>
         
         <div className={styles.ctaContainer}>

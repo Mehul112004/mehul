@@ -11,33 +11,33 @@ interface ExperienceItem {
 
 const EXPERIENCE_DATA: ExperienceItem[] = [
   {
-    year: '2023 — PRESENT',
+    year: 'JUL 2024 — MAY 2026',
     company: 'GoHappy Club',
-    role: 'Senior Full Stack Architect',
+    role: 'Full Stack Developer',
     details: [
-      'Scaled real-time engagement engine to 100k+ concurrent users.',
-      'Implemented event-driven architecture reducing latency by 45%.',
-      'Modernized legacy stack to Next.js and Go microservices.'
+      'Mobile: Sole engineer — built iOS/Android app from scratch in React Native & Expo with 40+ screens, phone OTP auth, and Branch.io deep links.',
+      'Backend: Sole developer — built Java Spring Boot API, coin gamification, and PhonePe subscription autopay with UPI mandates.',
+      'Admin & Web: Built MUI admin portal (22+ feature pages, Tambola game board) and React web portal with Zoom redirection & early-joiner lock.'
     ],
     active: true
   },
   {
-    year: '2021 — 2023',
-    company: 'Nexus Systems',
-    role: 'Backend Lead',
+    year: 'JUN 2024 — MAY 2026',
+    company: 'Dr. UPSC',
+    role: 'Frontend Developer (Founding Hire)',
     details: [
-      'Optimized data persistence layers for high-throughput I/O.',
-      'Developed automated CI/CD pipelines for multi-cloud deployments.',
-      'Managed a cross-functional team of 6 engineers.'
+      'Architecture: Sole frontend developer building Next.js web platform from scratch — 82 pages, 184 components, and 45K+ lines of code.',
+      'Video & Tests: Integrated Shaka Player adaptive streaming with chat replays, and built mock test engine with question prefetching.',
+      'UX: Implemented interactive themed overlays with Diwali sparklers & fireworks, and custom pichkari Holi animations.'
     ]
   },
   {
-    year: '2019 — 2021',
-    company: 'DataStream Corp',
-    role: 'Junior Developer',
+    year: '2022 — MAY 2026',
+    company: 'SKIT Jaipur',
+    role: 'B.Tech in Computer Science',
     details: [
-      'Built internal tooling reducing manual QA time by 30%.',
-      'Assisted in migration from monolithic to service-oriented architecture.'
+      'Academics: Graduated with a CGPA of 8.48.',
+      'Coursework: Data Structures & Algorithms, System Design, DBMS, Operating Systems, and Object-Oriented Programming.'
     ]
   }
 ];

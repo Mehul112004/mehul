@@ -10,10 +10,10 @@ interface Message {
 }
 
 const DONNA_RESPONSES = [
-  "Analyzing system requirements for high-availability clusters...",
-  "Querying project documentation database for architectural patterns...",
-  "Architectural patterns detected: High-availability, Event-driven, Microservices.",
-  "Would you like to view the source code for the Crypto Trading engine?",
+  "Analyzing mobile application state and offline edge AI capabilities...",
+  "Querying project documentation database for transaction processing patterns...",
+  "Architectural patterns detected: Event-driven, Dual-backend abstraction, WebSockets.",
+  "Would you like to check the C_Helper backtesting results?",
   "System performance metrics are currently within nominal range."
 ];
 
@@ -29,31 +29,6 @@ export function AIAssistant() {
 
   const activateLimelight = useLimelightStore((state) => state.activateLimelight);
   const deactivateLimelight = useLimelightStore((state) => state.deactivateLimelight);
-
-  // Auto-load logic: Open terminal after 1000ms and run sequence
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsOpen(true);
-      runInitialSequence();
-    }, 1000);
-    return () => clearTimeout(timer);
-  }, []);
-
-  // Focus input when terminal opens
-  useEffect(() => {
-    if (isOpen) {
-      setTimeout(() => {
-        inputRef.current?.focus();
-      }, 50);
-    }
-  }, [isOpen]);
-
-  // Scroll to bottom on new messages
-  useEffect(() => {
-    if (outputRef.current) {
-      outputRef.current.scrollTop = outputRef.current.scrollHeight;
-    }
-  }, [messages, isOpen]);
 
   const typeMessage = async (
     sender: 'SYSTEM' | 'USER' | 'DONNA',
@@ -76,7 +51,7 @@ export function AIAssistant() {
       );
       
       // Check if it includes our trigger text
-      if (typed.includes("Crypto Algorithmic Trading Script")) {
+      if (typed.includes("C_Helper: Crypto Intelligence")) {
         activateLimelight('crypto');
       }
       
@@ -96,10 +71,36 @@ export function AIAssistant() {
     await new Promise((r) => setTimeout(r, 600));
     await typeMessage(
       'DONNA',
-      "DONNA online. I see you're interested in high-frequency systems. Let's look at the Crypto Algorithmic Trading Script specifically for its architectural robustness.",
+      "DONNA online. I see you're interested in crypto intelligence systems. Let's look at the C_Helper: Crypto Intelligence specifically for its architectural robustness.",
       25
     );
   };
+
+  // Auto-load logic: Open terminal after 1000ms and run sequence
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsOpen(true);
+      runInitialSequence();
+    }, 1000);
+    return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Focus input when terminal opens
+  useEffect(() => {
+    if (isOpen) {
+      setTimeout(() => {
+        inputRef.current?.focus();
+      }, 50);
+    }
+  }, [isOpen]);
+
+  // Scroll to bottom on new messages
+  useEffect(() => {
+    if (outputRef.current) {
+      outputRef.current.scrollTop = outputRef.current.scrollHeight;
+    }
+  }, [messages, isOpen]);
 
   const toggleTerminal = () => {
     const nextOpen = !isOpen;

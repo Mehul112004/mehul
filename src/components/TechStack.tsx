@@ -2,18 +2,28 @@
 import styles from './TechStack.module.css';
 
 const TECH_ITEMS = [
-  'GO',
-  'RUST',
+  'REACT NATIVE',
+  'NEXT.JS',
+  'SPRING BOOT',
+  'FLASK',
   'TYPESCRIPT',
-  'KUBERNETES',
-  'DOCKER',
-  'REACT',
-  'POSTGRESQL',
-  'REDIS',
-  'AWS',
+  'JAVASCRIPT',
   'PYTHON',
-  'GRPC',
-  'KAFKA'
+  'JAVA',
+  'C++',
+  'SWIFT',
+  'EXPO',
+  'FIREBASE',
+  'AWS',
+  'GCP',
+  'DOCKER',
+  'POSTGRESQL',
+  'FIRESTORE',
+  'REDIS',
+  'CI/CD',
+  'PYTORCH',
+  'LANGCHAIN',
+  'TAILWIND CSS'
 ];
 
 export function TechStack() {

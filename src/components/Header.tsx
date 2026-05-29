@@ -29,7 +29,7 @@ export function Header() {
 
   return (
     <header className={styles.header}>
-      <a href="#" className={styles.logo}>ARCHITECT.IO</a>
+      <a href="#" className={styles.logo}>MEHUL.DEV</a>
       
       <nav className={styles.nav}>
         <a 

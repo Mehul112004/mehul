@@ -3,6 +3,7 @@ import styles from './Projects.module.css';
 import { useLimelightStore } from '../store/useLimelightStore';
 
 interface Project {
+  id: string;
   version: string;
   iconName: string;
   title: string;
@@ -12,32 +13,52 @@ interface Project {
 
 const PROJECTS_DATA: Project[] = [
   {
-    version: 'v2.4.0',
-    iconName: 'terminal',
-    title: 'Crypto Algorithmic Trading Script',
-    description: 'High-frequency trading engine built for low-latency execution and real-time risk management across distributed exchanges.',
-    tags: ['RUST', 'WASM', 'GRPC']
+    id: 'c_helper',
+    version: 'v1.2.0',
+    iconName: 'candlestick_chart',
+    title: 'C_Helper: Crypto Intelligence',
+    description: 'Crypto signal intelligence platform featuring a gate-based strategy engine, SMC zone detection, real-time WebSocket scanning, and local LLM confirmation.',
+    tags: ['PYTHON', 'FLASK', 'TIMESCALEDB', 'REACT', 'LLM']
   },
   {
-    version: 'v1.0.8',
-    iconName: 'database',
-    title: 'Backend Architectures',
-    description: 'Cloud-native microservices infrastructure designed for 99.99% uptime and elastic scalability using Kubernetes orchestration.',
-    tags: ['GO', 'POSTGRES', 'K8S']
+    id: 'mayax',
+    version: 'v2.1.0',
+    iconName: 'imagesmode',
+    title: 'MayaX: AI Interior Design',
+    description: 'AI-driven interior design mobile app with Stable Diffusion style transfer and on-device Llama 3.2 1B prompt refinement via ExecuTorch.',
+    tags: ['REACT NATIVE', 'EXPO', 'SUPABASE', 'PYTORCH']
   },
   {
-    version: 'v0.9.1',
-    iconName: 'memory',
-    title: 'Distributed KV Store',
-    description: 'Consistent hash-based distributed storage system implementing the Raft consensus algorithm for fault tolerance.',
-    tags: ['CPP', 'DISTRIBUTED']
+    id: 'blockex',
+    version: 'v1.0.5',
+    iconName: 'extension',
+    title: 'Blockex: Safari Extension',
+    description: 'Native Safari browser extension for iOS and macOS blocking specific sites and hiding YouTube Shorts dynamically using MutationObserver.',
+    tags: ['SWIFT', 'JAVASCRIPT', 'UIKIT', 'MANIFEST_V3']
   },
   {
-    version: 'v4.2.0',
-    iconName: 'layers',
-    title: 'Real-time Data Fabric',
-    description: 'Streaming pipeline for massive-scale telemetry ingestion and analytical processing using Apache Kafka and Spark.',
-    tags: ['PYTHON', 'KAFKA']
+    id: 'peer_focus',
+    version: 'v1.1.2',
+    iconName: 'timer',
+    title: 'Peer Focus: Co-Working Rooms',
+    description: 'Collaborative study rooms with synchronized Pomodoro timers, goal tracking, a raw Canvas analog timer, and dual-backend abstraction.',
+    tags: ['REACT', 'TYPESCRIPT', 'SUPABASE', 'FIREBASE', 'CANVAS']
+  },
+  {
+    id: 'wallulu',
+    version: 'v1.0.1',
+    iconName: 'wallpaper',
+    title: 'Wallulu: Wallpaper Browser',
+    description: 'Wallpaper discovery app with a responsive masonry layout, advanced bottom-sheet filtering, and debounced API searching.',
+    tags: ['REACT NATIVE', 'EXPO', 'FLASH-LIST', 'PIXABAY']
+  },
+  {
+    id: 'glitch',
+    version: 'v0.9.5',
+    iconName: 'lock_open',
+    title: 'Glitch: Screen Time Blocker',
+    description: 'Cross-platform screen-time management app featuring peer-group consensus locks and custom native OS-level integration.',
+    tags: ['REACT NATIVE', 'EXPO', 'NATIVE_MODULES']
   }
 ];
 
@@ -51,18 +72,18 @@ export function Projects() {
           <span className={styles.label}>01 // SELECTED_WORKS</span>
           <h2 className={styles.title}>PROJECT_SHOWCASE</h2>
         </div>
-        <div className={styles.totalItems}>Total: 04 Items</div>
+        <div className={styles.totalItems}>Total: 06 Items</div>
       </div>
       
       <div className={styles.grid}>
         {PROJECTS_DATA.map((project, idx) => {
-          const isHighlighted = idx === 0 && highlightedProjectId === 'crypto';
+          const isHighlighted = project.id === 'c_helper' && highlightedProjectId === 'crypto';
           return (
             <div 
               key={idx} 
-              id={idx === 0 ? 'project-crypto' : undefined}
+              id={project.id === 'c_helper' ? 'project-crypto' : undefined}
               className={`${styles.card} ${isHighlighted ? 'project-highlight-active' : ''}`}
-              style={idx === 0 ? { transition: 'all 0.5s cubic-bezier(0.19, 1, 0.22, 1)' } : undefined}
+              style={project.id === 'c_helper' ? { transition: 'all 0.5s cubic-bezier(0.19, 1, 0.22, 1)' } : undefined}
             >
               {isHighlighted && (
                 <div className="source-tag">
@@ -80,17 +101,17 @@ export function Projects() {
               <div>
                 <h3 className={styles.projectTitle}>{project.title}</h3>
                 <p className={styles.projectDescription}>
-                  {idx === 0 ? (
+                  {project.id === 'c_helper' ? (
                     <>
-                      High-frequency trading engine built for{' '}
+                      Crypto signal platform identifying trade setups using technical analysis with a{' '}
                       <span className={`highlight-target ${isHighlighted ? 'text-mark' : ''}`}>
-                        low-latency execution
+                        gate-based strategy engine
                       </span>{' '}
-                      and real-time{' '}
+                      and local{' '}
                       <span className={`highlight-target ${isHighlighted ? 'text-mark' : ''}`}>
-                        risk management
+                        LLM confirmation
                       </span>{' '}
-                      across distributed exchanges.
+                      via WebSocket scanning.
                     </>
                   ) : (
                     project.description
