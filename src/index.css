@@ -1,0 +1,14 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  body {
+    @apply bg-background text-on-surface antialiased;
+    margin: 0;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #2e303a transparent;
+  }
+}

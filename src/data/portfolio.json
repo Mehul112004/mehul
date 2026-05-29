@@ -1,0 +1,476 @@
+{
+  "nodes": [
+    {
+      "id": "exp_gohappy",
+      "label": "GoHappy Club",
+      "group": "experience",
+      "brief": "Full Stack Developer — wellness & community platform for seniors, 17,000+ MAU.",
+      "drawerDetails": {
+        "role": "Full Stack Developer",
+        "timeline": "Jul 2024 – May 2026",
+        "description": "Built and scaled a senior-citizen wellness and community platform end-to-end as the sole engineer across mobile, backend, admin, and web. The platform serves 17,000+ monthly active users with 55,000+ total downloads across iOS and Android.",
+        "github": null,
+        "live": "https://www.gohappyclub.in",
+        "workstreams": [
+          {
+            "title": "Mobile Client (React Native)",
+            "description": "Sole mobile engineer — built the entire iOS + Android app from scratch. 40+ screens, OTA updates via Revopush, PhonePe/Paytring payments, Branch.io deep linking to 30+ screens, i18n in 5 Indian languages, CI/CD via GitHub Actions + EAS Build, and 1500+ commits over 2 years.",
+            "appStore": "https://apps.apple.com/in/app/gohappy-club-app-for-seniors/id6737447673",
+            "playStore": "https://play.google.com/store/apps/details?id=com.gohappyclient&hl=en_IN"
+          },
+          {
+            "title": "Backend (Spring Boot)",
+            "description": "Sole backend developer — ~697 commits (75% of total). Built the complete subscription lifecycle, PhonePe UPI autopay, gamification engine (spin wheel with 2-tier weighted algorithm, scratch cards, coin economy), BigQuery analytics pipeline, Neodove CRM integration, and migrated all cron jobs to Google Cloud Scheduler."
+          },
+          {
+            "title": "Admin Dashboard (React)",
+            "description": "Sole frontend developer — built the entire admin portal from scratch with 22+ feature pages. Includes a live Tambola game board with 90 traditional rhymes, a 5-tab Spin Wheel admin, full analytics suite with Chart.js/Nivo, NGO campaign lifecycle management, JWT auth with role-based access control, and dark/light theme with RTL support.",
+            "live": "https://admin.gohappyclub.in"
+          },
+          {
+            "title": "Web Portal (React)",
+            "description": "Sole frontend developer — built the public-facing SPA with 15 routes. Full PhonePe UPI payment flow (VPA + QR), membership subscription, trip/tour pages, Zoom meeting redirect with early-joiner lock, Neodove CRM integration, and CI/CD via GitHub Actions + FTP deploy to Hostinger."
+          }
+        ]
+      },
+      "connections": [
+        "skill_react_native",
+        "skill_react",
+        "skill_spring_boot",
+        "skill_typescript",
+        "skill_javascript",
+        "skill_java",
+        "skill_firebase",
+        "skill_aws",
+        "skill_gcp",
+        "skill_docker",
+        "skill_postgresql",
+        "skill_firestore",
+        "skill_redis",
+        "skill_ci_cd",
+        "skill_expo",
+        "skill_redux_toolkit",
+        "skill_nextjs"
+      ]
+    },
+    {
+      "id": "exp_drupsc",
+      "label": "Dr. UPSC",
+      "group": "experience",
+      "brief": "Frontend Developer — EdTech platform for UPSC aspirants, 15,000+ MAU.",
+      "drawerDetails": {
+        "role": "Frontend Developer (Founding Technical Hire)",
+        "timeline": "May 2024 – Jan 2025",
+        "description": "Designed and built a full-featured UPSC EdTech web platform from scratch as the sole frontend engineer — 82 pages, 184 components, 45K+ lines. Features include Shaka Player video streaming, a mock test engine with question prefetching, dual payment gateways (Razorpay + Cashfree), mentorship booking, e-commerce store, CleverTap analytics, and interactive seasonal animations.",
+        "github": null,
+        "live": "https://drupsc.com"
+      },
+      "connections": [
+        "skill_nextjs",
+        "skill_react",
+        "skill_typescript",
+        "skill_javascript",
+        "skill_firebase",
+        "skill_gcp",
+        "skill_tailwind",
+        "skill_python"
+      ]
+    },
+    {
+      "id": "proj_mayax",
+      "label": "MayaX",
+      "group": "project",
+      "brief": "AI-driven interior design platform — upload a room photo, get a styled transformation.",
+      "drawerDetails": {
+        "role": "Sole Developer (Full Stack + ML)",
+        "timeline": "Jan 2026 – Apr 2026",
+        "description": "A React Native app where users upload room photos and receive AI-generated interior design transformations. Built a Flask backend with Supabase, a custom Stable Diffusion inference pipeline, and on-device Llama 3.2 1B via ExecuTorch for offline prompt refinement. Includes a full data pipeline: Pexels/Unsplash scrapers, LLaVA auto-captioning, and LoRA fine-tuning.",
+        "github": null,
+        "live": null
+      },
+      "connections": [
+        "skill_react_native",
+        "skill_expo",
+        "skill_flask",
+        "skill_python",
+        "skill_pytorch",
+        "skill_computer_vision",
+        "skill_postgresql",
+        "skill_typescript",
+        "skill_javascript"
+      ]
+    },
+    {
+      "id": "proj_glitch",
+      "label": "Glitch",
+      "group": "project",
+      "brief": "Peer-authenticated screen time blocker — friends must approve to unlock your phone.",
+      "drawerDetails": {
+        "role": "Sole Developer",
+        "timeline": "2025",
+        "description": "A cross-platform screen-time management app built with React Native, using custom native modules to interface directly with OS-level APIs for usage tracking and app restrictions. The core innovation is a peer-group approval system — unlocking restricted sessions requires consensus from friends, preventing users from bypassing their own limits.",
+        "github": null,
+        "live": null
+      },
+      "connections": [
+        "skill_react_native",
+        "skill_expo",
+        "skill_javascript",
+        "skill_typescript"
+      ]
+    },
+    {
+      "id": "proj_blockex",
+      "label": "Blockex",
+      "group": "project",
+      "brief": "Native Safari extension (macOS + iOS) that blocks websites and hides YouTube Shorts.",
+      "drawerDetails": {
+        "role": "Sole Developer",
+        "timeline": "Feb 2026",
+        "description": "A native Safari browser extension built with Swift and JavaScript (Manifest V3). Implements dual-layer URL blocking via declarativeNetRequest + DOM fallback, YouTube Shorts hiding with MutationObserver for SPA navigation detection, and a cross-platform popup UI with dark mode. Zero external dependencies — every line is hand-written against native platform APIs.",
+        "github": null,
+        "live": null
+      },
+      "connections": ["skill_javascript", "skill_swift", "skill_typescript"]
+    },
+    {
+      "id": "proj_c_helper",
+      "label": "C_Helper",
+      "group": "project",
+      "brief": "Local crypto signal intelligence platform — LLM-confirmed trade setups via technical analysis.",
+      "drawerDetails": {
+        "role": "Sole Developer (Full Stack)",
+        "timeline": "Apr 2026 – May 2026",
+        "description": "A personal crypto signal platform that watches BTC, ETH, SOL, and XRP across multiple timeframes. Features a gate-based strategy engine (6 active strategies), Smart Money Concepts detection (FVGs, Order Blocks, BOS, CHoCH), multi-timeframe confluence, LLM confirmation via local LM Studio or OpenRouter, real-time WebSocket scanning with gap healing, full backtesting engine (685 lines), and Telegram delivery.",
+        "github": null,
+        "live": null
+      },
+      "connections": [
+        "skill_python",
+        "skill_flask",
+        "skill_react",
+        "skill_typescript",
+        "skill_postgresql",
+        "skill_javascript",
+        "skill_langchain"
+      ]
+    },
+    {
+      "id": "proj_peer_focus",
+      "label": "Peer Focus",
+      "group": "project",
+      "brief": "Real-time collaborative focus rooms with synchronized Pomodoro timers and peer accountability.",
+      "drawerDetails": {
+        "role": "Sole Developer",
+        "timeline": "Feb 2026",
+        "description": "A web app where peers join shared rooms with synchronized Pomodoro-style timers and goal tracking. Built with a dual-backend abstraction layer — switching between Supabase and Firebase requires a single env var change. Features a canvas-drawn HiDPI analog timer, client-side tick engine with 5s debounced DB sync, auto-pause on tab close via fetch keepalive, and real-time goal updates across all peers.",
+        "github": null,
+        "live": null
+      },
+      "connections": [
+        "skill_react",
+        "skill_typescript",
+        "skill_javascript",
+        "skill_postgresql",
+        "skill_firestore",
+        "skill_tailwind"
+      ]
+    },
+    {
+      "id": "proj_wallulu",
+      "label": "Wallulu",
+      "group": "project",
+      "brief": "Wallpaper discovery app — browse, filter, and download high-quality wallpapers.",
+      "drawerDetails": {
+        "role": "Sole Developer",
+        "timeline": "Apr 2024 – May 2024",
+        "description": "A React Native (Expo) wallpaper browsing app using the Pixabay API. Features a responsive masonry grid with dynamic image sizing, debounced search, 21 category filters, an advanced filter modal (orientation, image type, 11 color filters), infinite scroll pagination, and full-screen image preview.",
+        "github": null,
+        "live": null
+      },
+      "connections": ["skill_react_native", "skill_expo", "skill_javascript"]
+    },
+    {
+      "id": "edu_skit",
+      "label": "SKIT Jaipur",
+      "group": "education",
+      "brief": "B.Tech in Computer Science — CGPA 8.48, graduating May 2026.",
+      "drawerDetails": {
+        "role": "Student",
+        "timeline": "2022 – May 2026",
+        "description": "B.Tech in Computer Science & Engineering from Swami Keshvanand Institute of Technology, Management & Gramothan, Jaipur. CGPA: 8.48. Core coursework in Data Structures & Algorithms, System Design, DBMS, Operating Systems, and OOP.",
+        "github": null,
+        "live": null
+      },
+      "connections": [
+        "skill_java",
+        "skill_cpp",
+        "skill_python",
+        "skill_javascript"
+      ]
+    },
+    {
+      "id": "skill_react_native",
+      "label": "React Native",
+      "group": "skill",
+      "brief": "Cross-platform mobile development (iOS + Android).",
+      "drawerDetails": null,
+      "connections": []
+    },
+    {
+      "id": "skill_react",
+      "label": "React.js",
+      "group": "skill",
+      "brief": "Component-based UI development for web.",
+      "drawerDetails": null,
+      "connections": []
+    },
+    {
+      "id": "skill_nextjs",
+      "label": "Next.js",
+      "group": "skill",
+      "brief": "React framework for SSR, SSG, and full-stack web apps.",
+      "drawerDetails": null,
+      "connections": []
+    },
+    {
+      "id": "skill_spring_boot",
+      "label": "Spring Boot",
+      "group": "skill",
+      "brief": "Java-based backend framework for production APIs.",
+      "drawerDetails": null,
+      "connections": []
+    },
+    {
+      "id": "skill_flask",
+      "label": "Flask",
+      "group": "skill",
+      "brief": "Lightweight Python web framework for REST APIs.",
+      "drawerDetails": null,
+      "connections": []
+    },
+    {
+      "id": "skill_typescript",
+      "label": "TypeScript",
+      "group": "skill",
+      "brief": "Typed superset of JavaScript for scalable codebases.",
+      "drawerDetails": null,
+      "connections": []
+    },
+    {
+      "id": "skill_javascript",
+      "label": "JavaScript",
+      "group": "skill",
+      "brief": "Core language for web and cross-platform development.",
+      "drawerDetails": null,
+      "connections": []
+    },
+    {
+      "id": "skill_python",
+      "label": "Python",
+      "group": "skill",
+      "brief": "Used for backend APIs, ML pipelines, and data processing.",
+      "drawerDetails": null,
+      "connections": []
+    },
+    {
+      "id": "skill_java",
+      "label": "Java",
+      "group": "skill",
+      "brief": "Backend development with Spring Boot.",
+      "drawerDetails": null,
+      "connections": []
+    },
+    {
+      "id": "skill_cpp",
+      "label": "C++",
+      "group": "skill",
+      "brief": "Systems programming and competitive coding.",
+      "drawerDetails": null,
+      "connections": []
+    },
+    {
+      "id": "skill_swift",
+      "label": "Swift",
+      "group": "skill",
+      "brief": "Native iOS/macOS development.",
+      "drawerDetails": null,
+      "connections": []
+    },
+    {
+      "id": "skill_expo",
+      "label": "Expo",
+      "group": "skill",
+      "brief": "React Native toolchain — EAS Build, OTA updates, native modules.",
+      "drawerDetails": null,
+      "connections": []
+    },
+    {
+      "id": "skill_firebase",
+      "label": "Firebase",
+      "group": "skill",
+      "brief": "Auth, Firestore, FCM push notifications, Crashlytics.",
+      "drawerDetails": null,
+      "connections": []
+    },
+    {
+      "id": "skill_aws",
+      "label": "AWS",
+      "group": "skill",
+      "brief": "EC2, S3, Lambda — cloud compute and serverless.",
+      "drawerDetails": null,
+      "connections": []
+    },
+    {
+      "id": "skill_gcp",
+      "label": "GCP",
+      "group": "skill",
+      "brief": "App Engine, Cloud Scheduler, Secrets Manager, BigQuery.",
+      "drawerDetails": null,
+      "connections": []
+    },
+    {
+      "id": "skill_docker",
+      "label": "Docker",
+      "group": "skill",
+      "brief": "Containerization for local dev and production deployments.",
+      "drawerDetails": null,
+      "connections": []
+    },
+    {
+      "id": "skill_postgresql",
+      "label": "PostgreSQL",
+      "group": "skill",
+      "brief": "Relational database with TimescaleDB for time-series data.",
+      "drawerDetails": null,
+      "connections": []
+    },
+    {
+      "id": "skill_firestore",
+      "label": "Firestore",
+      "group": "skill",
+      "brief": "NoSQL real-time database on Google Cloud.",
+      "drawerDetails": null,
+      "connections": []
+    },
+    {
+      "id": "skill_redis",
+      "label": "Redis",
+      "group": "skill",
+      "brief": "In-memory data store for caching and fast lookups.",
+      "drawerDetails": null,
+      "connections": []
+    },
+    {
+      "id": "skill_ci_cd",
+      "label": "CI/CD",
+      "group": "skill",
+      "brief": "GitHub Actions pipelines, EAS Build, CircleCI, Cloud Build.",
+      "drawerDetails": null,
+      "connections": []
+    },
+    {
+      "id": "skill_pytorch",
+      "label": "PyTorch",
+      "group": "skill",
+      "brief": "Deep learning — Stable Diffusion, LoRA fine-tuning.",
+      "drawerDetails": null,
+      "connections": []
+    },
+    {
+      "id": "skill_computer_vision",
+      "label": "Computer Vision",
+      "group": "skill",
+      "brief": "OpenCV, image processing pipelines, spatial analysis.",
+      "drawerDetails": null,
+      "connections": []
+    },
+    {
+      "id": "skill_langchain",
+      "label": "LangChain",
+      "group": "skill",
+      "brief": "LLM orchestration and prompt pipelines.",
+      "drawerDetails": null,
+      "connections": []
+    },
+    {
+      "id": "skill_redux_toolkit",
+      "label": "Redux Toolkit",
+      "group": "skill",
+      "brief": "State management for React and React Native apps.",
+      "drawerDetails": null,
+      "connections": []
+    },
+    {
+      "id": "skill_tailwind",
+      "label": "Tailwind CSS",
+      "group": "skill",
+      "brief": "Utility-first CSS framework for rapid UI development.",
+      "drawerDetails": null,
+      "connections": []
+    }
+  ],
+  "links": [
+    { "source": "exp_gohappy", "target": "skill_react_native" },
+    { "source": "exp_gohappy", "target": "skill_react" },
+    { "source": "exp_gohappy", "target": "skill_spring_boot" },
+    { "source": "exp_gohappy", "target": "skill_typescript" },
+    { "source": "exp_gohappy", "target": "skill_javascript" },
+    { "source": "exp_gohappy", "target": "skill_java" },
+    { "source": "exp_gohappy", "target": "skill_firebase" },
+    { "source": "exp_gohappy", "target": "skill_aws" },
+    { "source": "exp_gohappy", "target": "skill_gcp" },
+    { "source": "exp_gohappy", "target": "skill_docker" },
+    { "source": "exp_gohappy", "target": "skill_postgresql" },
+    { "source": "exp_gohappy", "target": "skill_firestore" },
+    { "source": "exp_gohappy", "target": "skill_redis" },
+    { "source": "exp_gohappy", "target": "skill_ci_cd" },
+    { "source": "exp_gohappy", "target": "skill_expo" },
+    { "source": "exp_gohappy", "target": "skill_redux_toolkit" },
+    { "source": "exp_gohappy", "target": "skill_nextjs" },
+    { "source": "exp_drupsc", "target": "skill_nextjs" },
+    { "source": "exp_drupsc", "target": "skill_react" },
+    { "source": "exp_drupsc", "target": "skill_typescript" },
+    { "source": "exp_drupsc", "target": "skill_javascript" },
+    { "source": "exp_drupsc", "target": "skill_firebase" },
+    { "source": "exp_drupsc", "target": "skill_gcp" },
+    { "source": "exp_drupsc", "target": "skill_tailwind" },
+    { "source": "exp_drupsc", "target": "skill_python" },
+    { "source": "proj_mayax", "target": "skill_react_native" },
+    { "source": "proj_mayax", "target": "skill_expo" },
+    { "source": "proj_mayax", "target": "skill_flask" },
+    { "source": "proj_mayax", "target": "skill_python" },
+    { "source": "proj_mayax", "target": "skill_pytorch" },
+    { "source": "proj_mayax", "target": "skill_computer_vision" },
+    { "source": "proj_mayax", "target": "skill_postgresql" },
+    { "source": "proj_mayax", "target": "skill_typescript" },
+    { "source": "proj_mayax", "target": "skill_javascript" },
+    { "source": "proj_glitch", "target": "skill_react_native" },
+    { "source": "proj_glitch", "target": "skill_expo" },
+    { "source": "proj_glitch", "target": "skill_javascript" },
+    { "source": "proj_glitch", "target": "skill_typescript" },
+    { "source": "proj_blockex", "target": "skill_javascript" },
+    { "source": "proj_blockex", "target": "skill_swift" },
+    { "source": "proj_blockex", "target": "skill_typescript" },
+    { "source": "proj_c_helper", "target": "skill_python" },
+    { "source": "proj_c_helper", "target": "skill_flask" },
+    { "source": "proj_c_helper", "target": "skill_react" },
+    { "source": "proj_c_helper", "target": "skill_typescript" },
+    { "source": "proj_c_helper", "target": "skill_postgresql" },
+    { "source": "proj_c_helper", "target": "skill_javascript" },
+    { "source": "proj_c_helper", "target": "skill_langchain" },
+    { "source": "proj_peer_focus", "target": "skill_react" },
+    { "source": "proj_peer_focus", "target": "skill_typescript" },
+    { "source": "proj_peer_focus", "target": "skill_javascript" },
+    { "source": "proj_peer_focus", "target": "skill_postgresql" },
+    { "source": "proj_peer_focus", "target": "skill_firestore" },
+    { "source": "proj_peer_focus", "target": "skill_tailwind" },
+    { "source": "proj_wallulu", "target": "skill_react_native" },
+    { "source": "proj_wallulu", "target": "skill_expo" },
+    { "source": "proj_wallulu", "target": "skill_javascript" },
+    { "source": "edu_skit", "target": "skill_java" },
+    { "source": "edu_skit", "target": "skill_cpp" },
+    { "source": "edu_skit", "target": "skill_python" },
+    { "source": "edu_skit", "target": "skill_javascript" }
+  ]
+}
