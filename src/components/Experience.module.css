@@ -131,6 +131,12 @@
 
 .timelineContent {
   padding-left: 32px;
+  cursor: pointer;
+}
+
+.timelineContent:hover .companyName {
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 @media (min-width: 768px) {

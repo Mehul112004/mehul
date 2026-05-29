@@ -1,7 +1,11 @@
 
+import { useState } from 'react';
 import styles from './Experience.module.css';
+import { ExperienceModal } from './ExperienceModal';
+import portfolioData from '../data/portfolio.json';
 
 interface ExperienceItem {
+  id: string;
   year: string;
   company: string;
   role: string;
@@ -11,6 +15,7 @@ interface ExperienceItem {
 
 const EXPERIENCE_DATA: ExperienceItem[] = [
   {
+    id: 'exp_gohappy',
     year: 'JUL 2024 — MAY 2026',
     company: 'GoHappy Club',
     role: 'Full Stack Developer',
@@ -22,6 +27,7 @@ const EXPERIENCE_DATA: ExperienceItem[] = [
     active: true
   },
   {
+    id: 'exp_drupsc',
     year: 'JUN 2024 — MAY 2026',
     company: 'Dr. UPSC',
     role: 'Frontend Developer (Founding Hire)',
@@ -32,6 +38,7 @@ const EXPERIENCE_DATA: ExperienceItem[] = [
     ]
   },
   {
+    id: 'edu_skit',
     year: '2022 — MAY 2026',
     company: 'SKIT Jaipur',
     role: 'B.Tech in Computer Science',
@@ -43,6 +50,41 @@ const EXPERIENCE_DATA: ExperienceItem[] = [
 ];
 
 export function Experience() {
+  const [selectedExperience, setSelectedExperience] = useState<any | null>(null);
+
+  const handleRowClick = (item: ExperienceItem) => {
+    const matchedNode = portfolioData.nodes.find(
+      (node) => node.id === item.id
+    );
+
+    const tagList: string[] = [];
+    if (matchedNode && matchedNode.connections) {
+      matchedNode.connections.forEach((connId) => {
+        const skillNode = portfolioData.nodes.find(
+          (n) => n.id === connId && n.group === 'skill'
+        );
+        if (skillNode) {
+          tagList.push(skillNode.label);
+        }
+      });
+    }
+
+    const details = {
+      id: item.id,
+      company: item.company,
+      role: matchedNode?.drawerDetails?.role || item.role,
+      timeline: matchedNode?.drawerDetails?.timeline || item.year,
+      description: matchedNode?.drawerDetails?.description || item.details.join(' '),
+      tags: tagList.length > 0 ? tagList : [],
+      status: item.active ? 'ACTIVE' : 'COMPLETED',
+      live: matchedNode?.drawerDetails?.live || null,
+      github: matchedNode?.drawerDetails?.github || null,
+      workstreams: matchedNode?.drawerDetails?.workstreams || undefined,
+    };
+
+    setSelectedExperience(details);
+  };
+
   return (
     <section className={styles.section} id="experience">
       <div className={styles.header}>
@@ -81,6 +123,7 @@ export function Experience() {
                 className={`${styles.timelineContent} ${
                   !isEven ? styles.timelineContentReverse : ''
                 }`}
+                onClick={() => handleRowClick(item)}
               >
                 {/* Year for Mobile */}
                 <span className={styles.timelineYearMobile}>{item.year}</span>
@@ -101,6 +144,11 @@ export function Experience() {
           );
         })}
       </div>
+      <ExperienceModal
+        isOpen={selectedExperience !== null}
+        onClose={() => setSelectedExperience(null)}
+        experience={selectedExperience}
+      />
     </section>
   );
 }
