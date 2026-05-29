@@ -1,0 +1,202 @@
+.section {
+  padding: 96px var(--spacing-margin-desktop);
+  border-bottom: 1px solid var(--color-outline-variant);
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 96px var(--spacing-margin-mobile);
+  }
+}
+
+.header {
+  margin-bottom: 64px;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-outline);
+}
+
+.title {
+  font-family: var(--font-body);
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-top: 8px;
+}
+
+.timelineContainer {
+  position: relative;
+  margin-left: 16px;
+}
+
+@media (min-width: 768px) {
+  .timelineContainer {
+    margin-left: 0;
+  }
+}
+
+.timelineLine {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-color: var(--color-structural-border);
+}
+
+@media (min-width: 768px) {
+  .timelineLine {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.timelineRow {
+  position: relative;
+  margin-bottom: 96px;
+}
+
+.timelineRow:last-child {
+  margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .timelineRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .timelineRowReverse {
+    flex-direction: row-reverse;
+  }
+}
+
+.timelineYearDesktop {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .timelineYearDesktop {
+    display: block;
+    width: 45%;
+  }
+
+  .textRight {
+    text-align: right;
+    padding-right: 48px;
+  }
+
+  .textLeft {
+    text-align: left;
+    padding-left: 48px;
+  }
+}
+
+.yearLabel {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--color-outline);
+}
+
+.node {
+  position: absolute;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border: 1px solid var(--color-outline-variant);
+  z-index: 10;
+  transform: translate(-4.5px, 8px);
+}
+
+.nodeActive {
+  background-color: var(--color-primary);
+}
+
+.nodeInactive {
+  background-color: var(--color-background);
+}
+
+@media (min-width: 768px) {
+  .node {
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+}
+
+.timelineContent {
+  padding-left: 32px;
+}
+
+@media (min-width: 768px) {
+  .timelineContent {
+    width: 45%;
+    padding-left: 48px;
+    padding-right: 0;
+  }
+
+  .timelineContentReverse {
+    padding-right: 48px;
+    padding-left: 0;
+    text-align: right;
+  }
+}
+
+.timelineYearMobile {
+  display: block;
+  margin-bottom: 8px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--color-outline);
+}
+
+@media (min-width: 768px) {
+  .timelineYearMobile {
+    display: none;
+  }
+}
+
+.companyName {
+  font-family: var(--font-body);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 8px;
+}
+
+.roleTitle {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-outline);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.detailList {
+  list-style: none;
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--color-outline-variant);
+}
+
+.detailList li {
+  margin-bottom: 8px;
+  display: flex;
+  gap: 8px;
+}
+
+.bullet {
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .timelineContentReverse .detailList li {
+    flex-direction: row-reverse;
+  }
+}

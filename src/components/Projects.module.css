@@ -1,0 +1,129 @@
+.section {
+  padding: 96px var(--spacing-margin-desktop);
+  border-bottom: 1px solid var(--color-outline-variant);
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 96px var(--spacing-margin-mobile);
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 48px;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-outline);
+}
+
+.title {
+  font-family: var(--font-body);
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-top: 8px;
+}
+
+.totalItems {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--color-outline-variant);
+}
+
+@media (max-width: 768px) {
+  .totalItems {
+    display: none;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--color-outline-variant);
+  border-left: 1px solid var(--color-outline-variant);
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  position: relative;
+  background-color: var(--color-surface-card);
+  padding: 32px;
+  border-right: 1px solid var(--color-outline-variant);
+  border-bottom: 1px solid var(--color-outline-variant);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 320px;
+  transition: none; /* Instant transitions for Brutalist feel */
+}
+
+.card:hover {
+  border-color: var(--color-primary);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 64px;
+  align-items: center;
+}
+
+.version {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--color-outline);
+}
+
+.icon {
+  color: var(--color-outline);
+  font-size: 24px;
+}
+
+.card:hover .icon {
+  color: var(--color-primary);
+}
+
+.projectTitle {
+  font-family: var(--font-body);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 16px;
+}
+
+.projectDescription {
+  color: var(--color-outline);
+  font-family: var(--font-body);
+  font-size: 16px;
+  margin-bottom: 32px;
+  flex-grow: 1;
+}
+
+.techTags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  border: 1px solid var(--color-outline-variant);
+  padding: 4px 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-outline);
+  text-transform: uppercase;
+}

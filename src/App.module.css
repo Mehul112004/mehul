@@ -1,0 +1,4 @@
+.main {
+  padding-top: 72px; /* Match the fixed header height */
+  width: 100%;
+}
