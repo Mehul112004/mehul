@@ -1,6 +1,9 @@
 
+import { useState } from 'react';
 import styles from './Projects.module.css';
 import { useLimelightStore } from '../store/useLimelightStore';
+import { ProjectModal } from './ProjectModal';
+import portfolioData from '../data/portfolio.json';
 
 interface Project {
   id: string;
@@ -64,6 +67,30 @@ const PROJECTS_DATA: Project[] = [
 
 export function Projects() {
   const highlightedProjectId = useLimelightStore((state) => state.highlightedProjectId);
+  const [selectedProject, setSelectedProject] = useState<any | null>(null);
+
+  const handleCardClick = (project: Project) => {
+    const matchedNode = portfolioData.nodes.find(
+      (node) => node.id === `proj_${project.id}`
+    );
+    
+    const details = {
+      id: project.id,
+      version: project.version,
+      iconName: project.iconName,
+      title: project.title,
+      description: project.description,
+      longDescription: matchedNode?.drawerDetails?.description || project.description,
+      tags: project.tags,
+      role: matchedNode?.drawerDetails?.role || 'Sole Developer',
+      timeline: matchedNode?.drawerDetails?.timeline || '2026',
+      status: 'DEPLOYED_STABLE',
+      live: matchedNode?.drawerDetails?.live || null,
+      github: matchedNode?.drawerDetails?.github || null,
+    };
+    
+    setSelectedProject(details);
+  };
 
   return (
     <section className={styles.section} id="projects">
@@ -84,6 +111,7 @@ export function Projects() {
               id={project.id === 'c_helper' ? 'project-crypto' : undefined}
               className={`${styles.card} ${isHighlighted ? 'project-highlight-active' : ''}`}
               style={project.id === 'c_helper' ? { transition: 'all 0.5s cubic-bezier(0.19, 1, 0.22, 1)' } : undefined}
+              onClick={() => handleCardClick(project)}
             >
               {isHighlighted && (
                 <div className="source-tag">
@@ -130,6 +158,11 @@ export function Projects() {
           );
         })}
       </div>
+      <ProjectModal
+        isOpen={selectedProject !== null}
+        onClose={() => setSelectedProject(null)}
+        project={selectedProject}
+      />
     </section>
   );
 }
