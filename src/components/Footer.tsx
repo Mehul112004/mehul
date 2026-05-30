@@ -4,10 +4,10 @@ import styles from './Footer.module.css';
 export function Footer() {
   return (
     <footer className={styles.footer} id="contact">
-      <div className={styles.logo}>MEHUL.DEV</div>
+      <div className={styles.logo}>MEHUL</div>
       
       <div className={styles.copyright}>
-        © 2026 MEHUL.DEV — BUILT FOR PERFORMANCE
+        © 2026 MEHUL — BUILT FOR PERFORMANCE
       </div>
       
       <div className={styles.links}>
