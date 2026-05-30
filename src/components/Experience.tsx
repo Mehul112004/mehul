@@ -52,6 +52,7 @@ const EXPERIENCE_DATA: ExperienceItem[] = [
 
 export function Experience() {
   const highlightedProjectIds = useLimelightStore((state) => state.highlightedProjectIds);
+  const setProjectDetailsOpen = useLimelightStore((state) => state.setProjectDetailsOpen);
   const [selectedExperience, setSelectedExperience] = useState<any | null>(null);
 
   const handleRowClick = (item: ExperienceItem) => {
@@ -85,6 +86,7 @@ export function Experience() {
     };
 
     setSelectedExperience(details);
+    setProjectDetailsOpen(true);
   };
 
   return (
@@ -157,7 +159,10 @@ export function Experience() {
       </div>
       <ExperienceModal
         isOpen={selectedExperience !== null}
-        onClose={() => setSelectedExperience(null)}
+        onClose={() => {
+          setSelectedExperience(null);
+          setProjectDetailsOpen(false);
+        }}
         experience={selectedExperience}
       />
     </section>
