@@ -24,7 +24,7 @@ function App() {
   const prevIsLimelightActive = useRef(isLimelightActive);
 
   const [isResumeOpen, setIsResumeOpen] = useState(false);
-  const [resumeUrl] = useState("../data/Mehul_s_Resume-3.pdf");
+  const [resumeUrl] = useState("/Mehul_s_Resume-3.pdf");
 
   useEffect(() => {
     if (isLimelightActive) {

@@ -17,7 +17,7 @@ Dr. UPSC is a full-featured, secure EdTech web application built using Next.js a
 
 ## Timeline
 
-June 2024 – May 2026
+June 2024 – Jan 2025
 
 ## Tech Stack
 

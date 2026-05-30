@@ -27,5 +27,5 @@ React 19, TypeScript, Vite 7, Tailwind CSS 4, React Router v7, Supabase (Postgre
 - **`beforeunload` reliability** — used `fetch` with `keepalive: true` (not `sendBeacon` limited to `POST`) to PATCH the member row on page unload, directly calling the Supabase REST API (or Firestore REST API) to bypass the JS SDK which may not complete in time during unload.
 - **Memory management in real-time subscriptions** — properly tracked and cleaned up Supabase realtime channels and Firestore `onSnapshot` unsubscribe functions on component unmount to prevent memory leaks.
 ## Links
-GitHub: private
-Live / Demo: none
+GitHub: https://github.com/Mehul112004/Peer-Focus
+Live / Demo: https://peer-focus.vercel.app

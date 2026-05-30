@@ -32,5 +32,5 @@ Feb 2026
 - **Promise wrappers for legacy browser APIs** — `browser.storage.local` in Safari uses callbacks rather than promises. Wrote `getStorage()`/`setStorage()` wrappers that return promises for clean `async/await` usage throughout the codebase.
 - **Zero dependencies** — The entire product (Swift app + JS extension + UI) uses no third-party packages, CocoaPods, or npm modules. Every line is hand-written against native platform APIs.
 ## Links
-GitHub: private
+GitHub: https://github.com/Mehul112004/Blockex
 Live / Demo: none

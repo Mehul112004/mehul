@@ -23,9 +23,14 @@
             "description": "Contributed approximately 697 commits across 22 months as the sole backend developer. Migrated all background cron jobs from Spring @Scheduled annotations to HTTP endpoints triggered by Google Cloud Scheduler. Engineered a budget-constrained weighted probability algorithm for gamification rewards."
           },
           {
-            "title": "Admin & Web Portals (React)",
+            "title": "Admin Portal (React)",
             "description": "Developed a decoupled routing architecture with 14 main routes utilizing the React Context API. Engineered an interactive Tambola live game board featuring a 90-number visual grid and a traditional rhymes database.",
             "live": "https://admin.gohappyclub.in"
+          },
+          {
+            "title": "WebApp (React)",
+            "description": "Architected and built a highly optimized, high-accessibility React single-page application from scratch for senior citizens (50+). Integrated end-to-end PhonePe UPI subscription mandates, payment gateways, client-side caching calendars, and automated lead capture pipelines.",
+            "live": "https://www.gohappyclub.in"
           }
         ]
       },
@@ -81,7 +86,7 @@
         "role": "Sole Developer (Full Stack + ML)",
         "timeline": "Jan 2026 – Apr 2026",
         "description": "A React Native application providing AI-generated interior design transformations. Integrated react-native-executorch with Expo Resource Fetcher to run Llama 3.2 1B entirely on-device for prompt refinement. Architected a full data pipeline utilizing Pexels and Unsplash API scrapers, LLaVA auto-captioning, and LoRA fine-tuning. Engineered a custom loading overlay with animated skeleton cards to manage UX during complex async inference state orchestrations.",
-        "github": null,
+        "github": "https://github.com/Mehul112004/MayaX",
         "live": null
       },
       "connections": [
@@ -105,7 +110,7 @@
         "role": "Sole Developer",
         "timeline": "Feb 2026",
         "description": "A cross-platform Safari extension built by integrating a Swift container app with a Manifest V3 JavaScript extension. Implements SPA navigation detection via a MutationObserver on the document subtree to intercept dynamic route transitions. Designed a total-rule-rebuild strategy for the declarativeNetRequest API to ensure consistent domain blocking. Engineered completely from scratch with zero external dependencies.",
-        "github": null,
+        "github": "https://github.com/Mehul112004/Blockex",
         "live": null
       },
       "connections": ["skill_javascript", "skill_swift", "skill_typescript"]
@@ -119,7 +124,7 @@
         "role": "Sole Developer (Full Stack)",
         "timeline": "Apr 2026 – May 2026",
         "description": "A local crypto signal intelligence tool watching BTC, ETH, SOL, and XRP across multiple timeframes. Designed an abstract base strategy class with a gated confidence system. Built a 6-dimension structured context builder feeding an OpenAI-compatible LLM client for signal confirmation. Developed a full backtesting engine simulating trades with realistic next-bar-open entries and implemented an asynchronous notification system via SSE pub/sub and a Telegram queue.",
-        "github": null,
+        "github": "https://github.com/Mehul112004/C_helper",
         "live": null
       },
       "connections": [
@@ -141,8 +146,8 @@
         "role": "Sole Developer",
         "timeline": "Feb 2026",
         "description": "A real-time collaborative focus application utilizing Supabase Realtime subscriptions and Firestore listeners. Developed a dual-backend abstraction layer natively switching between Supabase and Firebase via a single environment variable. Engineered a client-side timer tick engine that synchronizes to the database via debounced PATCH calls. Built a HiDPI-aware circular timer utilizing the raw Canvas 2D API for zero DOM overhead.",
-        "github": null,
-        "live": null
+        "github": "https://github.com/Mehul112004/Peer-Focus",
+        "live": "https://peer-focus.vercel.app"
       },
       "connections": [
         "skill_react",
@@ -162,7 +167,7 @@
         "role": "Sole Developer",
         "timeline": "Apr 2024 – May 2024",
         "description": "A React Native application parsing the Pixabay API for high-quality imagery. Built a responsive masonry layout using @shopify/flash-list with dynamic column counts based on device width. Engineered a custom bottom sheet modal for advanced filtering and managed complex state interactions across search queries, active categories, and pagination limits.",
-        "github": null,
+        "github": "https://github.com/Mehul112004/Wallulu",
         "live": null
       },
       "connections": ["skill_react_native", "skill_expo", "skill_javascript"]

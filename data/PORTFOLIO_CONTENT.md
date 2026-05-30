@@ -118,13 +118,15 @@ This document compiles the exact text displayed on the portfolio website across 
       * **iOS App Store**: https://apps.apple.com/in/app/gohappy-club-app-for-seniors/id6737447673
       * **Android Play Store**: https://play.google.com/store/apps/details?id=com.gohappyclient&hl=en_IN
     * **Backend (Spring Boot)**: `Contributed approximately 697 commits across 22 months as the sole backend developer. Migrated all background cron jobs from Spring @Scheduled annotations to HTTP endpoints triggered by Google Cloud Scheduler. Engineered a budget-constrained weighted probability algorithm for gamification rewards.`
-    * **Admin & Web Portals (React)**: `Developed a decoupled routing architecture with 14 main routes utilizing the React Context API. Engineered an interactive Tambola live game board featuring a 90-number visual grid and a traditional rhymes database.`
+    * **Admin Portal (React)**: `Developed a decoupled routing architecture with 14 main routes utilizing the React Context API. Engineered an interactive Tambola live game board featuring a 90-number visual grid and a traditional rhymes database.`
       * **Live Admin**: https://admin.gohappyclub.in
+    * **WebApp (React)**: `Architected and built a highly optimized, high-accessibility React single-page application from scratch for senior citizens (50+). Integrated end-to-end PhonePe UPI subscription mandates, sandboxed payment gateways, client-side caching calendars, and automated lead capture pipelines.`
+      * **Live WebApp**: https://www.gohappyclub.in
   * **Connected Skills**: `React Native` | `React.js` | `Spring Boot` | `TypeScript` | `JavaScript` | `Java` | `Firebase` | `AWS` | `GCP` | `Docker` | `PostgreSQL` | `Firestore` | `Redis` | `CI/CD` | `Expo` | `Redux Toolkit` | `Next.js`
 
 ### 2. Dr. UPSC
 * **Main Timeline Card**:
-  * **Timeline**: `JUN 2024 — MAY 2026`
+  * **Timeline**: `JUN 2024 — JAN 2025`
   * **Role**: `Frontend Developer (Founding Hire)`
   * **Bullet Points**:
     * `Architecture: Scaled the Next.js web platform from scratch to successfully serve over 15,000 active users.`

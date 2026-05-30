@@ -83,5 +83,5 @@ Jan 2026 – Apr 2026
 - **Polished Design Loading Experience:** The skeleton card overlay with animated fade-out provides meaningful feedback during what would otherwise be a long blank wait for AI inference (which can take 60–120 seconds).
 
 ## Links
-GitHub: private
+GitHub: https://github.com/Mehul112004/MayaX
 Live / Demo: none

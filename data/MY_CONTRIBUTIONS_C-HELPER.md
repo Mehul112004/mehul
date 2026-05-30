@@ -41,5 +41,5 @@ Apr 2026 – May 2026 (6 weeks)
 - **Cold Start & Gap Healing Architecture** — Built a robust initialization sequence: on session start, backfill historical candles for indicator warmup, generate S/R zones on-demand, then connect WebSocket. On reconnect, detect the gap duration, backfill missing candles, recompute indicators, and resume scanning — all without manual intervention.
 
 ## Links
-GitHub: private
+GitHub: https://github.com/Mehul112004/C_helper
 Live / Demo: none (local-only application)

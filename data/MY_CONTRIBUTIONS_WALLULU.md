@@ -41,5 +41,5 @@ April 2024 – May 2024
 - **Multiple Data Sources Coexisting**: The app supports simultaneous search queries, category filters, and advanced filters — any combination triggers a pagination reset and fresh API call. Managing the interplay between `search`, `activeCategory`, `filters`, and pagination state without race conditions was nontrivial.
 - **Download Functionality Attempt**: Attempted to implement wallpaper download using `expo-file-system` and `expo-media-library`, navigating permissions and file storage — a work-in-progress feature at the end of the timeline.
 ## Links
-GitHub: (private)
+GitHub: https://github.com/Mehul112004/Wallulu
 Live / Demo: (none)
