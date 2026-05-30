@@ -125,7 +125,7 @@
         "timeline": "Apr 2026 – May 2026",
         "description": "A local crypto signal intelligence tool watching BTC, ETH, SOL, and XRP across multiple timeframes. Designed an abstract base strategy class with a gated confidence system. Built a 6-dimension structured context builder feeding an OpenAI-compatible LLM client for signal confirmation. Developed a full backtesting engine simulating trades with realistic next-bar-open entries and implemented an asynchronous notification system via SSE pub/sub and a Telegram queue.",
         "github": "https://github.com/Mehul112004/C_helper",
-        "live": null
+        "live": "https://t-bot-five.vercel.app/signal-feed"
       },
       "connections": [
         "skill_python",

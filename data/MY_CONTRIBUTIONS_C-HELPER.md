@@ -42,4 +42,4 @@ Apr 2026 – May 2026 (6 weeks)
 
 ## Links
 GitHub: https://github.com/Mehul112004/C_helper
-Live / Demo: none (local-only application)
+Live / Demo: https://t-bot-five.vercel.app/signal-feed

@@ -1,9 +1,11 @@
-
-import { useState } from 'react';
-import styles from './Projects.module.css';
-import { useLimelightStore, getHighlightStyle } from '../store/useLimelightStore';
-import { ProjectModal } from './ProjectModal';
-import portfolioData from '../data/portfolio.json';
+import { useState } from "react";
+import styles from "./Projects.module.css";
+import {
+  useLimelightStore,
+  getHighlightStyle,
+} from "../store/useLimelightStore";
+import { ProjectModal } from "./ProjectModal";
+import portfolioData from "../data/portfolio.json";
 
 interface Project {
   id: string;
@@ -17,72 +19,82 @@ interface Project {
 
 const PROJECTS_DATA: Project[] = [
   {
-    id: 'c_helper',
-    version: 'v1.2.0',
-    iconName: 'candlestick_chart',
-    title: 'C_Helper: Crypto Intelligence',
-    description: 'Crypto signal platform identifying trade setups via a gate-based strategy engine and a 6-dimension structured context builder feeding a local LLM.',
-    tags: ['PYTHON', 'FLASK', 'TIMESCALEDB', 'REACT', 'LLM']
+    id: "c_helper",
+    version: "v1.2.0",
+    iconName: "candlestick_chart",
+    title: "C_Helper: Crypto Intelligence",
+    description:
+      "Crypto signal platform identifying trade setups via a gate-based strategy engine and a 6-dimension structured context builder feeding a local LLM.",
+    tags: ["PYTHON", "FLASK", "REACT", "LLM"],
   },
   {
-    id: 'mayax',
-    version: 'v2.1.0',
-    iconName: 'imagesmode',
-    title: 'MayaX: AI Interior Design',
-    description: 'AI-driven interior design mobile application integrating custom Stable Diffusion inference and an on-device Llama 3.2 1B model via ExecuTorch.',
-    tags: ['REACT NATIVE', 'EXPO', 'SUPABASE', 'PYTORCH']
+    id: "mayax",
+    version: "v2.1.0",
+    iconName: "imagesmode",
+    title: "MayaX: AI Interior Design",
+    description:
+      "AI-driven interior design mobile application integrating custom Stable Diffusion inference and an on-device Llama 3.2 1B model via ExecuTorch.",
+    tags: ["REACT NATIVE", "EXPO", "SUPABASE", "PYTORCH"],
   },
   {
-    id: 'blockex',
-    version: 'v1.0.5',
-    iconName: 'extension',
-    title: 'Blockex: Safari Extension',
-    description: 'Native Safari browser extension implementing dual-layer URL blocking and SPA navigation detection via MutationObserver APIs.',
-    tags: ['SWIFT', 'JAVASCRIPT', 'UIKIT', 'MANIFEST_V3']
+    id: "blockex",
+    version: "v1.0.5",
+    iconName: "extension",
+    title: "Blockex: Safari Extension",
+    description:
+      "Native Safari browser extension implementing dual-layer URL blocking and SPA navigation detection via MutationObserver APIs.",
+    tags: ["SWIFT", "JAVASCRIPT", "UIKIT", "MANIFEST_V3"],
   },
   {
-    id: 'peer_focus',
-    version: 'v1.1.2',
-    iconName: 'timer',
-    title: 'Peer Focus: Co-Working Rooms',
-    description: 'Collaborative study environment featuring synchronized Pomodoro timers and a custom dual-backend abstraction layer for native database switching.',
-    tags: ['REACT', 'TYPESCRIPT', 'SUPABASE', 'FIREBASE', 'CANVAS']
+    id: "peer_focus",
+    version: "v1.1.2",
+    iconName: "timer",
+    title: "Peer Focus: Co-Working Rooms",
+    description:
+      "Collaborative study environment featuring synchronized Pomodoro timers and a custom dual-backend abstraction layer for native database switching.",
+    tags: ["REACT", "TYPESCRIPT", "SUPABASE", "FIREBASE", "CANVAS"],
   },
   {
-    id: 'wallulu',
-    version: 'v1.0.1',
-    iconName: 'wallpaper',
-    title: 'Wallulu: Wallpaper Browser',
-    description: 'High-performance wallpaper discovery application utilizing intersection observer-based infinite scrolling and a responsive masonry grid.',
-    tags: ['REACT NATIVE', 'EXPO', 'FLASH-LIST', 'PIXABAY']
-  }
+    id: "wallulu",
+    version: "v1.0.1",
+    iconName: "wallpaper",
+    title: "Wallulu: Wallpaper Browser",
+    description:
+      "High-performance wallpaper discovery application utilizing intersection observer-based infinite scrolling and a responsive masonry grid.",
+    tags: ["REACT NATIVE", "EXPO", "FLASH-LIST", "PIXABAY"],
+  },
 ];
 
 export function Projects() {
-  const highlightedProjectIds = useLimelightStore((state) => state.highlightedProjectIds);
-  const setProjectDetailsOpen = useLimelightStore((state) => state.setProjectDetailsOpen);
+  const highlightedProjectIds = useLimelightStore(
+    (state) => state.highlightedProjectIds,
+  );
+  const setProjectDetailsOpen = useLimelightStore(
+    (state) => state.setProjectDetailsOpen,
+  );
   const [selectedProject, setSelectedProject] = useState<any | null>(null);
 
   const handleCardClick = (project: Project) => {
     const matchedNode = portfolioData.nodes.find(
-      (node) => node.id === `proj_${project.id}`
+      (node) => node.id === `proj_${project.id}`,
     );
-    
+
     const details = {
       id: project.id,
       version: project.version,
       iconName: project.iconName,
       title: project.title,
       description: project.description,
-      longDescription: matchedNode?.drawerDetails?.description || project.description,
+      longDescription:
+        matchedNode?.drawerDetails?.description || project.description,
       tags: project.tags,
-      role: matchedNode?.drawerDetails?.role || 'Sole Developer',
-      timeline: matchedNode?.drawerDetails?.timeline || '2026',
-      status: 'DEPLOYED_STABLE',
+      role: matchedNode?.drawerDetails?.role || "Sole Developer",
+      timeline: matchedNode?.drawerDetails?.timeline || "2026",
+      status: "DEPLOYED_STABLE",
       live: matchedNode?.drawerDetails?.live || null,
       github: matchedNode?.drawerDetails?.github || null,
     };
-    
+
     setSelectedProject(details);
     setProjectDetailsOpen(true);
   };
@@ -96,23 +108,29 @@ export function Projects() {
         </div>
         <div className={styles.totalItems}>Total: 05 Items</div>
       </div>
-      
+
       <div className={styles.grid}>
         {PROJECTS_DATA.map((project, idx) => {
           const isHighlighted = highlightedProjectIds.includes(project.id);
           const highlightIndex = highlightedProjectIds.indexOf(project.id);
           return (
-            <div 
-              key={idx} 
+            <div
+              key={idx}
               id={project.id}
-              className={`${styles.card} ${isHighlighted ? 'project-highlight-active' : ''}`}
-              style={isHighlighted ? getHighlightStyle(project.id, highlightIndex, highlightedProjectIds.length) : undefined}
+              className={`${styles.card} ${isHighlighted ? "project-highlight-active" : ""}`}
+              style={
+                isHighlighted
+                  ? getHighlightStyle(
+                      project.id,
+                      highlightIndex,
+                      highlightedProjectIds.length,
+                    )
+                  : undefined
+              }
               onClick={() => handleCardClick(project)}
             >
               {isHighlighted && (
-                <div className="source-tag">
-                  SOURCE_REF: DONNA_v1.0.2
-                </div>
+                <div className="source-tag">SOURCE_REF: DONNA_v1.0.2</div>
               )}
 
               <div className={styles.cardHeader}>
@@ -121,26 +139,32 @@ export function Projects() {
                   {project.iconName}
                 </span>
               </div>
-              
+
               <div>
                 <h3 className={styles.projectTitle}>{project.title}</h3>
                 <p className={styles.projectDescription}>
-                  {project.id === 'c_helper' ? (
+                  {project.id === "c_helper" ? (
                     <>
-                      Crypto signal platform identifying trade setups via a{' '}
-                      <span className={`highlight-target ${isHighlighted ? 'text-mark' : ''}`}>
+                      Crypto signal platform identifying trade setups via a{" "}
+                      <span
+                        className={`highlight-target ${isHighlighted ? "text-mark" : ""}`}
+                      >
                         gate-based strategy engine
-                      </span>{' '}
-                      and a 6-dimension structured context builder feeding a local{' '}
-                      <span className={`highlight-target ${isHighlighted ? 'text-mark' : ''}`}>
+                      </span>{" "}
+                      and a 6-dimension structured context builder feeding a
+                      local{" "}
+                      <span
+                        className={`highlight-target ${isHighlighted ? "text-mark" : ""}`}
+                      >
                         LLM
-                      </span>.
+                      </span>
+                      .
                     </>
                   ) : (
                     project.description
                   )}
                 </p>
-                
+
                 <div className={styles.techTags}>
                   {project.tags.map((tag, tagIdx) => (
                     <span key={tagIdx} className={styles.tag}>
