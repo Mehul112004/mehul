@@ -101,25 +101,6 @@
       ]
     },
     {
-      "id": "proj_glitch",
-      "label": "Glitch",
-      "group": "project",
-      "brief": "Peer-authenticated screen time blocker — friends must approve to unlock your phone.",
-      "drawerDetails": {
-        "role": "Sole Developer",
-        "timeline": "2025",
-        "description": "A cross-platform screen-time management app built with React Native, using custom native modules to interface directly with OS-level APIs for usage tracking and app restrictions. The core innovation is a peer-group approval system — unlocking restricted sessions requires consensus from friends, preventing users from bypassing their own limits.",
-        "github": null,
-        "live": null
-      },
-      "connections": [
-        "skill_react_native",
-        "skill_expo",
-        "skill_javascript",
-        "skill_typescript"
-      ]
-    },
-    {
       "id": "proj_blockex",
       "label": "Blockex",
       "group": "project",
@@ -445,10 +426,6 @@
     { "source": "proj_mayax", "target": "skill_postgresql" },
     { "source": "proj_mayax", "target": "skill_typescript" },
     { "source": "proj_mayax", "target": "skill_javascript" },
-    { "source": "proj_glitch", "target": "skill_react_native" },
-    { "source": "proj_glitch", "target": "skill_expo" },
-    { "source": "proj_glitch", "target": "skill_javascript" },
-    { "source": "proj_glitch", "target": "skill_typescript" },
     { "source": "proj_blockex", "target": "skill_javascript" },
     { "source": "proj_blockex", "target": "skill_swift" },
     { "source": "proj_blockex", "target": "skill_typescript" },

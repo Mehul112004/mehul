@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import styles from './Experience.module.css';
 import { ExperienceModal } from './ExperienceModal';
+import { useLimelightStore, getHighlightStyle } from '../store/useLimelightStore';
 import portfolioData from '../data/portfolio.json';
 
 interface ExperienceItem {
@@ -50,6 +51,7 @@ const EXPERIENCE_DATA: ExperienceItem[] = [
 ];
 
 export function Experience() {
+  const highlightedProjectIds = useLimelightStore((state) => state.highlightedProjectIds);
   const [selectedExperience, setSelectedExperience] = useState<any | null>(null);
 
   const handleRowClick = (item: ExperienceItem) => {
@@ -97,6 +99,8 @@ export function Experience() {
 
         {EXPERIENCE_DATA.map((item, idx) => {
           const isEven = idx % 2 === 0;
+          const isHighlighted = highlightedProjectIds.includes(item.id);
+          const highlightIndex = highlightedProjectIds.indexOf(item.id);
           return (
             <div 
               key={idx} 
@@ -120,11 +124,18 @@ export function Experience() {
 
               {/* Content Panel */}
               <div 
+                id={item.id}
                 className={`${styles.timelineContent} ${
                   !isEven ? styles.timelineContentReverse : ''
-                }`}
+                } ${isHighlighted ? 'project-highlight-active' : ''}`}
+                style={isHighlighted ? getHighlightStyle(item.id, highlightIndex, highlightedProjectIds.length) : undefined}
                 onClick={() => handleRowClick(item)}
               >
+                {isHighlighted && (
+                  <div className="source-tag" style={{ right: '0px' }}>
+                    SOURCE_REF: DONNA_v1.0.2
+                  </div>
+                )}
                 {/* Year for Mobile */}
                 <span className={styles.timelineYearMobile}>{item.year}</span>
                 

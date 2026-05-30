@@ -9,13 +9,110 @@ interface Message {
   text: string;
 }
 
-const DONNA_RESPONSES = [
-  "Analyzing mobile application state and offline edge AI capabilities...",
-  "Querying project documentation database for transaction processing patterns...",
-  "Architectural patterns detected: Event-driven, Dual-backend abstraction, WebSockets.",
-  "Would you like to check the C_Helper backtesting results?",
-  "System performance metrics are currently within nominal range."
-];
+function getDonnaResponse(query: string): { response: string; highlightIds: string[] } {
+  const normalized = query.toLowerCase();
+  
+  if (normalized.includes('c_helper') || normalized.includes('crypto') || normalized.includes('intelligence')) {
+    return {
+      response: "Highlighting C_Helper: Crypto Intelligence. Key features: gate-based strategy engine, SMC zone detection, WebSocket scan, and local LLM confirmation.",
+      highlightIds: ['c_helper']
+    };
+  }
+  if (normalized.includes('mayax') || normalized.includes('interior') || normalized.includes('stable diffusion')) {
+    return {
+      response: "Highlighting MayaX: AI Interior Design. Features Stable Diffusion style transfer, Supabase backend, and on-device Llama prompt refinement via ExecuTorch.",
+      highlightIds: ['mayax']
+    };
+  }
+  if (normalized.includes('blockex') || normalized.includes('safari') || normalized.includes('extension')) {
+    return {
+      response: "Highlighting Blockex: Safari Extension. Native Safari browser extension blocking sites and hiding YouTube Shorts dynamically using MutationObserver.",
+      highlightIds: ['blockex']
+    };
+  }
+  if (normalized.includes('peer focus') || normalized.includes('coworking') || normalized.includes('timer') || normalized.includes('pomodoro')) {
+    return {
+      response: "Highlighting Peer Focus: Co-Working Rooms. Multi-user study rooms with synchronized Pomodoro timers, goal tracking, and dual-backend abstraction.",
+      highlightIds: ['peer_focus']
+    };
+  }
+  if (normalized.includes('wallulu') || normalized.includes('wallpaper')) {
+    return {
+      response: "Highlighting Wallulu: Wallpaper Browser. Mobile app built in React Native/Expo with responsive masonry layout, Pixabay API, and debounced searching.",
+      highlightIds: ['wallulu']
+    };
+  }
+
+  // Experience queries
+  if (normalized.includes('gohappy') || normalized.includes('senior') || normalized.includes('wellness')) {
+    return {
+      response: "Highlighting GoHappy Club experience. Built senior citizen wellness platform serving 17,000+ MAU as sole mobile & full stack engineer.",
+      highlightIds: ['exp_gohappy']
+    };
+  }
+  if (normalized.includes('drupsc') || normalized.includes('upsc') || normalized.includes('mock test')) {
+    return {
+      response: "Highlighting Dr. UPSC experience. Built EdTech Next.js platform from scratch (82 pages, 184 components, 15k+ MAU) with Shaka Player and custom test engine.",
+      highlightIds: ['exp_drupsc']
+    };
+  }
+  if (normalized.includes('skit') || normalized.includes('b.tech') || normalized.includes('education') || normalized.includes('college') || normalized.includes('university')) {
+    return {
+      response: "Highlighting SKIT Jaipur education. Graduated B.Tech in Computer Science & Engineering with CGPA of 8.48.",
+      highlightIds: ['edu_skit']
+    };
+  }
+
+  // Multi-project/experience queries
+  if (normalized.includes('all projects') || normalized.includes('show all') || normalized.includes('every project')) {
+    return {
+      response: "Bringing all active projects to limelight: C_Helper, MayaX, Blockex, Peer Focus, and Wallulu.",
+      highlightIds: ['c_helper', 'mayax', 'blockex', 'peer_focus', 'wallulu']
+    };
+  }
+  if (normalized.includes('mobile') || normalized.includes('react native') || normalized.includes('expo') || normalized.includes('android') || normalized.includes('ios')) {
+    return {
+      response: "Bringing all mobile development work to limelight: MayaX, Wallulu, and GoHappy Club.",
+      highlightIds: ['mayax', 'wallulu', 'exp_gohappy']
+    };
+  }
+  if (normalized.includes('web') || normalized.includes('frontend') || normalized.includes('react') || normalized.includes('next.js')) {
+    return {
+      response: "Bringing web development works to limelight: C_Helper, Peer Focus, GoHappy Club, and Dr. UPSC.",
+      highlightIds: ['c_helper', 'peer_focus', 'exp_gohappy', 'exp_drupsc']
+    };
+  }
+  
+  // Default responses mapped to relevant IDs
+  const DONNA_RESPONSES_MAPPED = [
+    {
+      text: "Analyzing mobile application state and offline edge AI capabilities...",
+      ids: ['mayax']
+    },
+    {
+      text: "Querying project documentation database for transaction processing patterns...",
+      ids: ['exp_gohappy']
+    },
+    {
+      text: "Architectural patterns detected: Event-driven, Dual-backend abstraction, WebSockets.",
+      ids: ['c_helper', 'peer_focus']
+    },
+    {
+      text: "Would you like to check the C_Helper backtesting results?",
+      ids: ['c_helper']
+    },
+    {
+      text: "System performance metrics are currently within nominal range.",
+      ids: []
+    }
+  ];
+  
+  const selection = DONNA_RESPONSES_MAPPED[Math.floor(Math.random() * DONNA_RESPONSES_MAPPED.length)];
+  return {
+    response: selection.text,
+    highlightIds: selection.ids
+  };
+}
 
 export function AIAssistant() {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,7 +130,8 @@ export function AIAssistant() {
   const typeMessage = async (
     sender: 'SYSTEM' | 'USER' | 'DONNA',
     fullText: string,
-    speed: number = 20
+    speed: number = 20,
+    highlightIds?: string[]
   ) => {
     const id = `${sender.toLowerCase()}-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
     
@@ -50,9 +148,9 @@ export function AIAssistant() {
         prev.map((msg) => (msg.id === id ? { ...msg, text: typed } : msg))
       );
       
-      // Check if it includes our trigger text
-      if (typed.includes("C_Helper: Crypto Intelligence")) {
-        activateLimelight('crypto');
+      // Activate highlighting once typing is underway or finished
+      if (highlightIds && highlightIds.length > 0 && i === Math.min(10, fullText.length - 1)) {
+        activateLimelight(highlightIds);
       }
       
       await new Promise((resolve) => setTimeout(resolve, speed));
@@ -72,7 +170,8 @@ export function AIAssistant() {
     await typeMessage(
       'DONNA',
       "DONNA online. I see you're interested in crypto intelligence systems. Let's look at the C_Helper: Crypto Intelligence specifically for its architectural robustness.",
-      25
+      25,
+      ['c_helper']
     );
   };
 
@@ -120,8 +219,8 @@ export function AIAssistant() {
       
       // Simulate Donna response with a typing effect
       setTimeout(async () => {
-        const randomResponse = DONNA_RESPONSES[Math.floor(Math.random() * DONNA_RESPONSES.length)];
-        await typeMessage('DONNA', randomResponse, 25);
+        const { response, highlightIds } = getDonnaResponse(userText);
+        await typeMessage('DONNA', response, 25, highlightIds);
       }, 600);
     }
   };

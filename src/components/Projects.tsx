@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import styles from './Projects.module.css';
-import { useLimelightStore } from '../store/useLimelightStore';
+import { useLimelightStore, getHighlightStyle } from '../store/useLimelightStore';
 import { ProjectModal } from './ProjectModal';
 import portfolioData from '../data/portfolio.json';
 
@@ -54,19 +54,11 @@ const PROJECTS_DATA: Project[] = [
     title: 'Wallulu: Wallpaper Browser',
     description: 'Wallpaper discovery app with a responsive masonry layout, advanced bottom-sheet filtering, and debounced API searching.',
     tags: ['REACT NATIVE', 'EXPO', 'FLASH-LIST', 'PIXABAY']
-  },
-  {
-    id: 'glitch',
-    version: 'v0.9.5',
-    iconName: 'lock_open',
-    title: 'Glitch: Screen Time Blocker',
-    description: 'Cross-platform screen-time management app featuring peer-group consensus locks and custom native OS-level integration.',
-    tags: ['REACT NATIVE', 'EXPO', 'NATIVE_MODULES']
   }
 ];
 
 export function Projects() {
-  const highlightedProjectId = useLimelightStore((state) => state.highlightedProjectId);
+  const highlightedProjectIds = useLimelightStore((state) => state.highlightedProjectIds);
   const [selectedProject, setSelectedProject] = useState<any | null>(null);
 
   const handleCardClick = (project: Project) => {
@@ -99,18 +91,19 @@ export function Projects() {
           <span className={styles.label}>01 // SELECTED_WORKS</span>
           <h2 className={styles.title}>PROJECT_SHOWCASE</h2>
         </div>
-        <div className={styles.totalItems}>Total: 06 Items</div>
+        <div className={styles.totalItems}>Total: 05 Items</div>
       </div>
       
       <div className={styles.grid}>
         {PROJECTS_DATA.map((project, idx) => {
-          const isHighlighted = project.id === 'c_helper' && highlightedProjectId === 'crypto';
+          const isHighlighted = highlightedProjectIds.includes(project.id);
+          const highlightIndex = highlightedProjectIds.indexOf(project.id);
           return (
             <div 
               key={idx} 
-              id={project.id === 'c_helper' ? 'project-crypto' : undefined}
+              id={project.id}
               className={`${styles.card} ${isHighlighted ? 'project-highlight-active' : ''}`}
-              style={project.id === 'c_helper' ? { transition: 'all 0.5s cubic-bezier(0.19, 1, 0.22, 1)' } : undefined}
+              style={isHighlighted ? getHighlightStyle(project.id, highlightIndex, highlightedProjectIds.length) : undefined}
               onClick={() => handleCardClick(project)}
             >
               {isHighlighted && (
