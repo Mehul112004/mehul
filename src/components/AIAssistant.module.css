@@ -203,6 +203,14 @@
   user-select: none;
 }
 
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  overflow: hidden;
+}
+
 .input {
   background-color: transparent;
   border: none;
@@ -210,17 +218,33 @@
   color: var(--color-primary);
   font-family: var(--font-mono);
   font-size: 14px;
-  flex-grow: 1;
+  width: 100%;
   padding: 0;
+  caret-color: transparent; /* Hide native browser cursor */
 }
 
 .terminalCursor {
-  display: inline-block;
+  position: absolute;
+  pointer-events: none;
   width: 8px;
   height: 18px;
   background-color: var(--color-primary);
   animation: blinkCursor 1s step-end infinite;
-  vertical-align: middle;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.measure {
+  position: absolute;
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
+  white-space: pre;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  letter-spacing: normal;
+  padding: 0;
+  border: none;
 }
 
 .typingCursor {

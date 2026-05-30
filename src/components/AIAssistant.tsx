@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import type { KeyboardEvent } from 'react';
 import styles from './AIAssistant.module.css';
 import { useLimelightStore } from '../store/useLimelightStore';
@@ -32,6 +32,22 @@ export function AIAssistant() {
 
   const inputRef = useRef<HTMLInputElement>(null);
   const outputRef = useRef<HTMLDivElement>(null);
+  const cursorRef = useRef<HTMLDivElement>(null);
+  const measureRef = useRef<HTMLSpanElement>(null);
+
+  const updateCursorPosition = () => {
+    if (inputRef.current && measureRef.current && cursorRef.current) {
+      const selStart = inputRef.current.selectionStart ?? 0;
+      measureRef.current.textContent = inputRef.current.value.substring(0, selStart);
+      const scrollLeft = inputRef.current.scrollLeft;
+      const offset = measureRef.current.offsetWidth - scrollLeft;
+      cursorRef.current.style.left = `${offset}px`;
+    }
+  };
+
+  useLayoutEffect(() => {
+    updateCursorPosition();
+  }, [inputValue]);
 
   const activateLimelight = useLimelightStore((state) => state.activateLimelight);
   const deactivateLimelight = useLimelightStore((state) => state.deactivateLimelight);
@@ -323,18 +339,37 @@ export function AIAssistant() {
           <div className={styles.inputArea}>
             <div className={styles.inputContainer}>
               <span className={styles.prompt}>&gt;&gt;</span>
-              <input
-                ref={inputRef}
-                type="text"
-                className={styles.input}
-                placeholder={currentlyTypingId ? "Donna typing..." : "Type command..."}
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                onKeyDown={handleKeyPress}
-                autoComplete="off"
-                disabled={currentlyTypingId !== null}
-              />
-              {currentlyTypingId === null && <div className={styles.terminalCursor}></div>}
+              <div className={styles.inputWrapper}>
+                <input
+                  ref={inputRef}
+                  type="text"
+                  className={styles.input}
+                  placeholder={currentlyTypingId ? "Donna typing..." : "Type command..."}
+                  value={inputValue}
+                  onChange={(e) => {
+                    setInputValue(e.target.value);
+                    updateCursorPosition();
+                  }}
+                  onKeyDown={(e) => {
+                    handleKeyPress(e);
+                    setTimeout(updateCursorPosition, 0);
+                  }}
+                  onKeyUp={updateCursorPosition}
+                  onSelect={updateCursorPosition}
+                  onClick={updateCursorPosition}
+                  onScroll={updateCursorPosition}
+                  onFocus={updateCursorPosition}
+                  autoComplete="off"
+                  disabled={currentlyTypingId !== null}
+                />
+                {currentlyTypingId === null && (
+                  <div 
+                    ref={cursorRef} 
+                    className={styles.terminalCursor} 
+                  />
+                )}
+                <span ref={measureRef} className={styles.measure} />
+              </div>
             </div>
           </div>
         </div>
