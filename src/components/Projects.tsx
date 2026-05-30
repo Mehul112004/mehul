@@ -12,6 +12,7 @@ interface Project {
   title: string;
   description: string;
   tags: string[];
+  link?: string;
 }
 
 const PROJECTS_DATA: Project[] = [
@@ -20,7 +21,7 @@ const PROJECTS_DATA: Project[] = [
     version: 'v1.2.0',
     iconName: 'candlestick_chart',
     title: 'C_Helper: Crypto Intelligence',
-    description: 'Crypto signal intelligence platform featuring a gate-based strategy engine, SMC zone detection, real-time WebSocket scanning, and local LLM confirmation.',
+    description: 'Crypto signal platform identifying trade setups via a gate-based strategy engine and a 6-dimension structured context builder feeding a local LLM.',
     tags: ['PYTHON', 'FLASK', 'TIMESCALEDB', 'REACT', 'LLM']
   },
   {
@@ -28,7 +29,7 @@ const PROJECTS_DATA: Project[] = [
     version: 'v2.1.0',
     iconName: 'imagesmode',
     title: 'MayaX: AI Interior Design',
-    description: 'AI-driven interior design mobile app with Stable Diffusion style transfer and on-device Llama 3.2 1B prompt refinement via ExecuTorch.',
+    description: 'AI-driven interior design mobile application integrating custom Stable Diffusion inference and an on-device Llama 3.2 1B model via ExecuTorch.',
     tags: ['REACT NATIVE', 'EXPO', 'SUPABASE', 'PYTORCH']
   },
   {
@@ -36,7 +37,7 @@ const PROJECTS_DATA: Project[] = [
     version: 'v1.0.5',
     iconName: 'extension',
     title: 'Blockex: Safari Extension',
-    description: 'Native Safari browser extension for iOS and macOS blocking specific sites and hiding YouTube Shorts dynamically using MutationObserver.',
+    description: 'Native Safari browser extension implementing dual-layer URL blocking and SPA navigation detection via MutationObserver APIs.',
     tags: ['SWIFT', 'JAVASCRIPT', 'UIKIT', 'MANIFEST_V3']
   },
   {
@@ -44,7 +45,7 @@ const PROJECTS_DATA: Project[] = [
     version: 'v1.1.2',
     iconName: 'timer',
     title: 'Peer Focus: Co-Working Rooms',
-    description: 'Collaborative study rooms with synchronized Pomodoro timers, goal tracking, a raw Canvas analog timer, and dual-backend abstraction.',
+    description: 'Collaborative study environment featuring synchronized Pomodoro timers and a custom dual-backend abstraction layer for native database switching.',
     tags: ['REACT', 'TYPESCRIPT', 'SUPABASE', 'FIREBASE', 'CANVAS']
   },
   {
@@ -52,7 +53,7 @@ const PROJECTS_DATA: Project[] = [
     version: 'v1.0.1',
     iconName: 'wallpaper',
     title: 'Wallulu: Wallpaper Browser',
-    description: 'Wallpaper discovery app with a responsive masonry layout, advanced bottom-sheet filtering, and debounced API searching.',
+    description: 'High-performance wallpaper discovery application utilizing intersection observer-based infinite scrolling and a responsive masonry grid.',
     tags: ['REACT NATIVE', 'EXPO', 'FLASH-LIST', 'PIXABAY']
   }
 ];
@@ -124,15 +125,14 @@ export function Projects() {
                 <p className={styles.projectDescription}>
                   {project.id === 'c_helper' ? (
                     <>
-                      Crypto signal platform identifying trade setups using technical analysis with a{' '}
+                      Crypto signal platform identifying trade setups via a{' '}
                       <span className={`highlight-target ${isHighlighted ? 'text-mark' : ''}`}>
                         gate-based strategy engine
                       </span>{' '}
-                      and local{' '}
+                      and a 6-dimension structured context builder feeding a local{' '}
                       <span className={`highlight-target ${isHighlighted ? 'text-mark' : ''}`}>
-                        LLM confirmation
-                      </span>{' '}
-                      via WebSocket scanning.
+                        LLM
+                      </span>.
                     </>
                   ) : (
                     project.description

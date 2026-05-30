@@ -8,28 +8,24 @@
       "drawerDetails": {
         "role": "Full Stack Developer",
         "timeline": "Jul 2024 – May 2026",
-        "description": "Built and scaled a senior-citizen wellness and community platform end-to-end as the sole engineer across mobile, backend, admin, and web. The platform serves 17,000+ monthly active users with 55,000+ total downloads across iOS and Android.",
+        "description": "Built and scaled a senior-citizen wellness and community platform end-to-end as the sole engineer across mobile, backend, admin, and web.",
         "github": null,
         "live": "https://www.gohappyclub.in",
         "workstreams": [
           {
             "title": "Mobile Client (React Native)",
-            "description": "Sole mobile engineer — built the entire iOS + Android app from scratch. 40+ screens, OTA updates via Revopush, PhonePe/Paytring payments, Branch.io deep linking to 30+ screens, i18n in 5 Indian languages, CI/CD via GitHub Actions + EAS Build, and 1500+ commits over 2 years.",
+            "description": "Architected the application from scratch to successfully serve and support over 30,000 active senior citizen users. Standardized localization bundles supporting five Indian languages and developed remote checkout URLs to facilitate cross-generational payments.",
             "appStore": "https://apps.apple.com/in/app/gohappy-club-app-for-seniors/id6737447673",
             "playStore": "https://play.google.com/store/apps/details?id=com.gohappyclient&hl=en_IN"
           },
           {
             "title": "Backend (Spring Boot)",
-            "description": "Sole backend developer — ~697 commits (75% of total). Built the complete subscription lifecycle, PhonePe UPI autopay, gamification engine (spin wheel with 2-tier weighted algorithm, scratch cards, coin economy), BigQuery analytics pipeline, Neodove CRM integration, and migrated all cron jobs to Google Cloud Scheduler."
+            "description": "Contributed approximately 697 commits across 22 months as the sole backend developer. Migrated all background cron jobs from Spring @Scheduled annotations to HTTP endpoints triggered by Google Cloud Scheduler. Engineered a budget-constrained weighted probability algorithm for gamification rewards."
           },
           {
-            "title": "Admin Dashboard (React)",
-            "description": "Sole frontend developer — built the entire admin portal from scratch with 22+ feature pages. Includes a live Tambola game board with 90 traditional rhymes, a 5-tab Spin Wheel admin, full analytics suite with Chart.js/Nivo, NGO campaign lifecycle management, JWT auth with role-based access control, and dark/light theme with RTL support.",
+            "title": "Admin & Web Portals (React)",
+            "description": "Developed a decoupled routing architecture with 14 main routes utilizing the React Context API. Engineered an interactive Tambola live game board featuring a 90-number visual grid and a traditional rhymes database.",
             "live": "https://admin.gohappyclub.in"
-          },
-          {
-            "title": "Web Portal (React)",
-            "description": "Sole frontend developer — built the public-facing SPA with 15 routes. Full PhonePe UPI payment flow (VPA + QR), membership subscription, trip/tour pages, Zoom meeting redirect with early-joiner lock, Neodove CRM integration, and CI/CD via GitHub Actions + FTP deploy to Hostinger."
           }
         ]
       },
@@ -61,7 +57,7 @@
       "drawerDetails": {
         "role": "Frontend Developer (Founding Technical Hire)",
         "timeline": "May 2024 – Jan 2025",
-        "description": "Designed and built a full-featured UPSC EdTech web platform from scratch as the sole frontend engineer — 82 pages, 184 components, 45K+ lines. Features include Shaka Player video streaming, a mock test engine with question prefetching, dual payment gateways (Razorpay + Cashfree), mentorship booking, e-commerce store, CleverTap analytics, and interactive seasonal animations.",
+        "description": "Designed and built a full-featured UPSC EdTech web platform from scratch as the sole frontend engineer. Successfully scaled the application to serve over 15,000 active users. Implemented question prefetching to preload upcoming questions, achieving zero-latency navigation in test screens. Facilitated interactive student-mentor communication by integrating Agora video conferencing and Teachmint classrooms.",
         "github": null,
         "live": "https://drupsc.com"
       },
@@ -84,7 +80,7 @@
       "drawerDetails": {
         "role": "Sole Developer (Full Stack + ML)",
         "timeline": "Jan 2026 – Apr 2026",
-        "description": "A React Native app where users upload room photos and receive AI-generated interior design transformations. Built a Flask backend with Supabase, a custom Stable Diffusion inference pipeline, and on-device Llama 3.2 1B via ExecuTorch for offline prompt refinement. Includes a full data pipeline: Pexels/Unsplash scrapers, LLaVA auto-captioning, and LoRA fine-tuning.",
+        "description": "A React Native application providing AI-generated interior design transformations. Integrated react-native-executorch with Expo Resource Fetcher to run Llama 3.2 1B entirely on-device for prompt refinement. Architected a full data pipeline utilizing Pexels and Unsplash API scrapers, LLaVA auto-captioning, and LoRA fine-tuning. Engineered a custom loading overlay with animated skeleton cards to manage UX during complex async inference state orchestrations.",
         "github": null,
         "live": null
       },
@@ -108,7 +104,7 @@
       "drawerDetails": {
         "role": "Sole Developer",
         "timeline": "Feb 2026",
-        "description": "A native Safari browser extension built with Swift and JavaScript (Manifest V3). Implements dual-layer URL blocking via declarativeNetRequest + DOM fallback, YouTube Shorts hiding with MutationObserver for SPA navigation detection, and a cross-platform popup UI with dark mode. Zero external dependencies — every line is hand-written against native platform APIs.",
+        "description": "A cross-platform Safari extension built by integrating a Swift container app with a Manifest V3 JavaScript extension. Implements SPA navigation detection via a MutationObserver on the document subtree to intercept dynamic route transitions. Designed a total-rule-rebuild strategy for the declarativeNetRequest API to ensure consistent domain blocking. Engineered completely from scratch with zero external dependencies.",
         "github": null,
         "live": null
       },
@@ -122,7 +118,7 @@
       "drawerDetails": {
         "role": "Sole Developer (Full Stack)",
         "timeline": "Apr 2026 – May 2026",
-        "description": "A personal crypto signal platform that watches BTC, ETH, SOL, and XRP across multiple timeframes. Features a gate-based strategy engine (6 active strategies), Smart Money Concepts detection (FVGs, Order Blocks, BOS, CHoCH), multi-timeframe confluence, LLM confirmation via local LM Studio or OpenRouter, real-time WebSocket scanning with gap healing, full backtesting engine (685 lines), and Telegram delivery.",
+        "description": "A local crypto signal intelligence tool watching BTC, ETH, SOL, and XRP across multiple timeframes. Designed an abstract base strategy class with a gated confidence system. Built a 6-dimension structured context builder feeding an OpenAI-compatible LLM client for signal confirmation. Developed a full backtesting engine simulating trades with realistic next-bar-open entries and implemented an asynchronous notification system via SSE pub/sub and a Telegram queue.",
         "github": null,
         "live": null
       },
@@ -144,7 +140,7 @@
       "drawerDetails": {
         "role": "Sole Developer",
         "timeline": "Feb 2026",
-        "description": "A web app where peers join shared rooms with synchronized Pomodoro-style timers and goal tracking. Built with a dual-backend abstraction layer — switching between Supabase and Firebase requires a single env var change. Features a canvas-drawn HiDPI analog timer, client-side tick engine with 5s debounced DB sync, auto-pause on tab close via fetch keepalive, and real-time goal updates across all peers.",
+        "description": "A real-time collaborative focus application utilizing Supabase Realtime subscriptions and Firestore listeners. Developed a dual-backend abstraction layer natively switching between Supabase and Firebase via a single environment variable. Engineered a client-side timer tick engine that synchronizes to the database via debounced PATCH calls. Built a HiDPI-aware circular timer utilizing the raw Canvas 2D API for zero DOM overhead.",
         "github": null,
         "live": null
       },
@@ -165,7 +161,7 @@
       "drawerDetails": {
         "role": "Sole Developer",
         "timeline": "Apr 2024 – May 2024",
-        "description": "A React Native (Expo) wallpaper browsing app using the Pixabay API. Features a responsive masonry grid with dynamic image sizing, debounced search, 21 category filters, an advanced filter modal (orientation, image type, 11 color filters), infinite scroll pagination, and full-screen image preview.",
+        "description": "A React Native application parsing the Pixabay API for high-quality imagery. Built a responsive masonry layout using @shopify/flash-list with dynamic column counts based on device width. Engineered a custom bottom sheet modal for advanced filtering and managed complex state interactions across search queries, active categories, and pagination limits.",
         "github": null,
         "live": null
       },

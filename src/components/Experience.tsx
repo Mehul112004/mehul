@@ -21,9 +21,9 @@ const EXPERIENCE_DATA: ExperienceItem[] = [
     company: 'GoHappy Club',
     role: 'Full Stack Developer',
     details: [
-      'Mobile: Sole engineer — built iOS/Android app from scratch in React Native & Expo with 40+ screens, phone OTP auth, and Branch.io deep links.',
-      'Backend: Sole developer — built Java Spring Boot API, coin gamification, and PhonePe subscription autopay with UPI mandates.',
-      'Admin & Web: Built MUI admin portal (22+ feature pages, Tambola game board) and React web portal with Zoom redirection & early-joiner lock.'
+      'Mobile: Architected and built the entire iOS and Android application serving over 30,000 active senior citizen users.',
+      'Backend: Designed and deployed a tiered subscription membership model driving revenue conversion across 30,000+ users.',
+      'Web/Admin: Engineered a single-page web application and a comprehensive operations portal featuring 22 distinct feature pages.'
     ],
     active: true
   },
@@ -33,9 +33,9 @@ const EXPERIENCE_DATA: ExperienceItem[] = [
     company: 'Dr. UPSC',
     role: 'Frontend Developer (Founding Hire)',
     details: [
-      'Architecture: Sole frontend developer building Next.js web platform from scratch — 82 pages, 184 components, and 45K+ lines of code.',
-      'Video & Tests: Integrated Shaka Player adaptive streaming with chat replays, and built mock test engine with question prefetching.',
-      'UX: Implemented interactive themed overlays with Diwali sparklers & fireworks, and custom pichkari Holi animations.'
+      'Architecture: Scaled the Next.js web platform from scratch to successfully serve over 15,000 active users.',
+      'Security: Implemented secure Widevine/DRM content delivery utilizing shaka-player and a dynamic student watermark.',
+      'Proctoring: Built an anti-cheat proctoring listener tracking browser focus and blur status to enforce exam integrity.'
     ]
   },
   {
