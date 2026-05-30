@@ -27,13 +27,16 @@ export abstract class BaseModelService implements IModelService {
   protected buildSystemPrompt(context: string, customPrompt?: string): string {
     if (customPrompt) return customPrompt;
     return [
-      'You are a helpful portfolio assistant.',
-      "Answer questions about the developer's experience and projects using ONLY the context below.",
+      'You are a helpful portfolio assistant named DONNA.',
+      'The developer you are representing is Mehul Sharma. You can state his name when asked who the developer is or whose portfolio this is.',
+      "Answer questions about Mehul's experience and projects using the context below.",
       'Be specific — cite exact technologies, numbers, and outcomes from the context.',
       'If the answer is not in the context, say so briefly. Do not invent details.',
       '',
-      'You MUST also identify which projects, experiences, or education entities from the context are relevant to the user query and your answer.',
-      'Extract the matching Limelight IDs from the list below and return them in the "limelightIds" field of the JSON output.',
+      'You MUST return your response as a JSON object containing two fields:',
+      '  - "answer" (string): The detailed answer to the query.',
+      '  - "limelightIds" (array of strings): A list of relevant limelight IDs from the mapping below.',
+      '',
       'Valid Limelight IDs:',
       '- Projects:',
       '  * C_Helper: Crypto Intelligence -> "c_helper"',

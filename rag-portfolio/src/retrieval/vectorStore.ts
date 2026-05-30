@@ -58,29 +58,67 @@ export class VectorStore {
    */
   public async search(
     queryEmbedding: number[],
-    topK: number
+    topK: number,
+    queryText?: string
   ): Promise<RetrievalResult[]> {
     const loadedIndex = await this.ensureIndexLoaded();
-    const results: RetrievalResult[] = [];
+    
+    const projectResults: RetrievalResult[] = [];
+    const resumeResults: RetrievalResult[] = [];
 
     for (const chunk of loadedIndex.chunks) {
       const score = cosineSimilarity(queryEmbedding, chunk.embedding);
+      const isResume = chunk.project === "Mehul Sharma" || 
+                       (chunk.source && chunk.source.toLowerCase().includes('resume'));
 
-      // Minimum score threshold: filter out results below 0.15 to avoid noise
-      if (score >= 0.15) {
-        // Strip the float embedding vector before returning to save memory
-        const { embedding, ...chunkWithoutEmbedding } = chunk;
-        results.push({
-          chunk: chunkWithoutEmbedding,
-          score
-        });
+      // Strip the float embedding vector before returning to save memory
+      const { embedding, ...chunkWithoutEmbedding } = chunk;
+
+      if (isResume) {
+        if (score >= 0.05) {
+          resumeResults.push({
+            chunk: chunkWithoutEmbedding,
+            score
+          });
+        }
+      } else {
+        if (score >= 0.15) {
+          projectResults.push({
+            chunk: chunkWithoutEmbedding,
+            score
+          });
+        }
       }
     }
 
     // Sort descending by similarity score
-    results.sort((a, b) => b.score - a.score);
+    projectResults.sort((a, b) => b.score - a.score);
+    resumeResults.sort((a, b) => b.score - a.score);
 
-    // Return the top K matches
-    return results.slice(0, topK);
+    // Apply personal/biographical/general query heuristics
+    const isProjectSpecific = queryText ? /mayax|c_helper|c-helper|crypto|blockex|peer|focus|wallulu|gohappy|upsc/i.test(queryText) : false;
+    const isPersonalQuery = queryText ? 
+      (/who|whose|mehul|developer|owner|creator|author|contact|email|phone|resume|you|yourself|education|college|degree|university|hire|job|work/i.test(queryText) && !isProjectSpecific) : 
+      false;
+    
+    const isProjectMatchWeak = projectResults.length === 0 || projectResults[0].score < 0.35;
+
+    let finalResults: RetrievalResult[] = [];
+
+    if ((isPersonalQuery || isProjectMatchWeak) && resumeResults.length > 0) {
+      const resumeCount = Math.min(2, resumeResults.length);
+      finalResults = resumeResults.slice(0, resumeCount);
+      
+      const remainingSlots = topK - finalResults.length;
+      if (remainingSlots > 0 && projectResults.length > 0) {
+        finalResults = finalResults.concat(projectResults.slice(0, remainingSlots));
+      }
+    } else {
+      const allMatches = [...projectResults, ...resumeResults];
+      allMatches.sort((a, b) => b.score - a.score);
+      finalResults = allMatches.slice(0, topK);
+    }
+
+    return finalResults;
   }
 }

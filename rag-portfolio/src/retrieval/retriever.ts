@@ -19,7 +19,7 @@ export class Retriever {
     // Generate the embedding vector for the search query
     const queryEmbedding = await embedQuery(query);
 
-    // Query the vector store using the embedding vector
-    return this.vectorStore.search(queryEmbedding, topK);
+    // Query the vector store using the embedding vector and the query text
+    return this.vectorStore.search(queryEmbedding, topK, query);
   }
 }

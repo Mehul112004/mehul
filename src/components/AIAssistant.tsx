@@ -202,12 +202,11 @@ export function AIAssistant() {
         activeIds
       );
     } else {
-      console.log('[Limelight Debug] Chatbot running default c_helper sequence.');
+      console.log('[Limelight Debug] Chatbot running default introductory sequence.');
       await typeMessage(
         'DONNA',
-        "DONNA online. I see you're interested in crypto intelligence systems. Let's look at the C_Helper: Crypto Intelligence specifically for its architectural robustness.",
-        25,
-        ['c_helper']
+        "DONNA online. I am your AI architect assistant. Ask me anything about Mehul's project architectures, tech stacks, or professional experience, and I will query his portfolio index to guide you.",
+        25
       );
     }
   };
@@ -326,7 +325,7 @@ export function AIAssistant() {
           console.error('RAG Query Failure:', error);
           await typeMessage(
             'SYSTEM', 
-            `ERROR: Pipeline query failed. Make sure index.json is ingested and VITE_GEMINI_API_KEY is active.`,
+            `ERROR: Pipeline query failed. Make sure index.json is ingested and VITE_GROQ_API_KEY is active.`,
             10
           );
         }

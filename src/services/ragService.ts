@@ -76,21 +76,56 @@ export async function askRag(
   const queryEmbedding = output.tolist()[0] as number[];
 
   // 3. Score chunks using cosine similarity
-  const results: { chunk: any; score: number }[] = [];
+  const projectResults: { chunk: any; score: number }[] = [];
+  const resumeResults: { chunk: any; score: number }[] = [];
+
   for (const chunk of index.chunks) {
     const score = cosineSimilarity(queryEmbedding, chunk.embedding);
-    if (score >= 0.15) {
-      results.push({ chunk, score });
+    const isResume = chunk.project === "Mehul Sharma" || 
+                     (chunk.source && chunk.source.toLowerCase().includes('resume'));
+
+    if (isResume) {
+      if (score >= 0.05) {
+        resumeResults.push({ chunk, score });
+      }
+    } else {
+      if (score >= 0.15) {
+        projectResults.push({ chunk, score });
+      }
     }
   }
 
-  // 4. Sort descending and filter top 3
-  results.sort((a, b) => b.score - a.score);
-  const topK = results.slice(0, 3);
+  // Sort both lists descending by score
+  projectResults.sort((a, b) => b.score - a.score);
+  resumeResults.sort((a, b) => b.score - a.score);
+
+  // Determine if it is a personal/biographical/general query
+  const isProjectSpecific = /mayax|c_helper|c-helper|crypto|blockex|peer|focus|wallulu|gohappy|upsc/i.test(query);
+  const isPersonalQuery = /who|whose|mehul|developer|owner|creator|author|contact|email|phone|resume|you|yourself|education|college|degree|university|hire|job|work/i.test(query) && !isProjectSpecific;
+  const isProjectMatchWeak = projectResults.length === 0 || projectResults[0].score < 0.35;
+
+  let topK: { chunk: any; score: number }[] = [];
+
+  if ((isPersonalQuery || isProjectMatchWeak) && resumeResults.length > 0) {
+    // Prioritize resume chunks: take up to 2 resume chunks
+    const resumeCount = Math.min(2, resumeResults.length);
+    topK = resumeResults.slice(0, resumeCount);
+    
+    // Fill the remaining slots up to 3 with the best project matches
+    const remainingSlots = 3 - topK.length;
+    if (remainingSlots > 0 && projectResults.length > 0) {
+      topK = topK.concat(projectResults.slice(0, remainingSlots));
+    }
+  } else {
+    // Default standard behavior: take top 3 from all matches
+    const allMatches = [...projectResults, ...resumeResults];
+    allMatches.sort((a, b) => b.score - a.score);
+    topK = allMatches.slice(0, 3);
+  }
 
   if (topK.length === 0) {
     return {
-      answer: "I couldn't find any relevant details in Mehul's project context to answer your question.",
+      answer: "I couldn't find any relevant details in Mehul's project context or resume to answer your question.",
       sources: [],
       limelightIds: []
     };
@@ -103,7 +138,8 @@ export async function askRag(
 
   const systemPrompt = [
     'You are a helpful portfolio assistant named DONNA.',
-    "Answer questions about the developer's experience and projects using ONLY the context below.",
+    'The developer you are representing is Mehul Sharma. You can state his name when asked who the developer is or whose portfolio this is.',
+    "Answer questions about Mehul's experience and projects using the context below.",
     'Be specific — cite exact technologies, numbers, and outcomes from the context.',
     'If the answer is not in the context, say so briefly. Do not invent details.',
     '',
