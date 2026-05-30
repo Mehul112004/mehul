@@ -177,12 +177,37 @@ export function AIAssistant() {
     await new Promise((r) => setTimeout(r, 400));
     await typeMessage('SYSTEM', 'Initializing neural fabric...', 10);
     await new Promise((r) => setTimeout(r, 600));
-    await typeMessage(
-      'DONNA',
-      "DONNA online. I see you're interested in crypto intelligence systems. Let's look at the C_Helper: Crypto Intelligence specifically for its architectural robustness.",
-      25,
-      ['c_helper']
-    );
+
+    const activeIds = useLimelightStore.getState().highlightedProjectIds;
+    console.log('[Limelight Debug] Chatbot runInitialSequence checking activeIds:', activeIds);
+    if (activeIds.length > 0) {
+      const id = activeIds[0];
+      let name = id;
+      if (id === 'c_helper') name = 'C_Helper: Crypto Intelligence';
+      else if (id === 'mayax') name = 'MayaX: AI Interior Design';
+      else if (id === 'blockex') name = 'Blockex: Safari Extension';
+      else if (id === 'peer_focus') name = 'Peer Focus: Co-Working Rooms';
+      else if (id === 'wallulu') name = 'Wallulu: Wallpaper Browser';
+      else if (id === 'exp_gohappy') name = 'GoHappy Club';
+      else if (id === 'exp_drupsc') name = 'Dr. UPSC';
+      else if (id === 'edu_skit') name = 'SKIT Jaipur';
+
+      console.log('[Limelight Debug] Chatbot keeping activeId limelight:', id);
+      await typeMessage(
+        'DONNA',
+        `DONNA online. I see you're looking at ${name}. Let me know if you have any questions about this work.`,
+        25,
+        activeIds
+      );
+    } else {
+      console.log('[Limelight Debug] Chatbot running default c_helper sequence.');
+      await typeMessage(
+        'DONNA',
+        "DONNA online. I see you're interested in crypto intelligence systems. Let's look at the C_Helper: Crypto Intelligence specifically for its architectural robustness.",
+        25,
+        ['c_helper']
+      );
+    }
   };
 
   // Auto-load logic: Open terminal after 1000ms and run sequence
