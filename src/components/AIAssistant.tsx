@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 import type { KeyboardEvent } from 'react';
 import styles from './AIAssistant.module.css';
 import { useLimelightStore } from '../store/useLimelightStore';
+import { FilterService } from '../services/filterService';
+import { askRag } from '../services/ragService';
 
 const labelMessages = [
   "Ask me about Mehul?",
@@ -292,14 +294,43 @@ export function AIAssistant() {
       const userText = inputValue.trim();
       setInputValue('');
       
+      // Run validation filter
+      const filterResult = FilterService.filter(userText);
+
       // Type user message
       await typeMessage('USER', userText, 15);
       
-      // Simulate Donna response with a typing effect
+      if (!filterResult.isValid) {
+        // Display terminal error line for rejected message
+        setTimeout(async () => {
+          await typeMessage('SYSTEM', `ERROR: Message rejected - ${filterResult.reason}`, 10);
+        }, 400);
+        return;
+      }
+
+      // Query live RAG pipeline
       setTimeout(async () => {
-        const { response, highlightIds } = getDonnaResponse(userText);
-        await typeMessage('DONNA', response, 25, highlightIds);
-      }, 600);
+        try {
+          await typeMessage('SYSTEM', 'Querying neural fabric for project context...', 10);
+          const ragResponse = await askRag(filterResult.sanitizedText);
+
+          // Type Donna answer and highlight corresponding limelight elements
+          await typeMessage('DONNA', ragResponse.answer, 20, ragResponse.limelightIds);
+
+          // Display sources
+          if (ragResponse.sources.length > 0) {
+            const uniqueSources = Array.from(new Set(ragResponse.sources));
+            await typeMessage('SYSTEM', `Sources: ${uniqueSources.join(', ')}`, 10);
+          }
+        } catch (error: any) {
+          console.error('RAG Query Failure:', error);
+          await typeMessage(
+            'SYSTEM', 
+            `ERROR: Pipeline query failed. Make sure index.json is ingested and VITE_GEMINI_API_KEY is active.`,
+            10
+          );
+        }
+      }, 400);
     }
   };
 
