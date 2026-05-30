@@ -57,8 +57,6 @@ export function Header() {
           CONTACT
         </a>
       </nav>
-      
-      <button className={styles.resumeBtn}>RESUME</button>
     </header>
   );
 }

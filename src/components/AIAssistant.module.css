@@ -10,11 +10,18 @@
 
 .assistantContainer {
   position: fixed;
-  bottom: 32px;
-  right: 32px;
+  bottom: 24px;
+  right: 24px;
   display: flex;
   align-items: center;
   gap: 0;
+}
+
+@media (min-width: 768px) {
+  .assistantContainer {
+    bottom: 32px;
+    right: 32px;
+  }
 }
 
 .labelPill {
@@ -84,10 +91,11 @@
 
 .terminal {
   position: fixed;
-  bottom: 96px;
-  right: 32px;
+  bottom: 88px;
+  right: 24px;
   width: 350px;
   height: 500px;
+  max-height: calc(100vh - 100px);
   background-color: var(--color-background);
   border: 1px solid var(--color-primary);
   z-index: 99;
@@ -100,15 +108,19 @@
 @media (min-width: 768px) {
   .terminal {
     width: 450px;
+    bottom: 96px;
+    right: 32px;
   }
 }
 
 @media (max-width: 480px) {
   .terminal {
-    right: 16px;
-    left: 16px;
-    width: calc(100% - 32px);
-    bottom: 96px;
+    right: 12px;
+    left: 12px;
+    width: calc(100% - 24px);
+    bottom: 88px;
+    height: 420px;
+    max-height: calc(100vh - 100px);
   }
 }
 

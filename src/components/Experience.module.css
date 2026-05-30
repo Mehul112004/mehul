@@ -22,10 +22,16 @@
 
 .title {
   font-family: var(--font-body);
-  font-size: 32px;
+  font-size: 24px;
   font-weight: 600;
   color: var(--color-primary);
   margin-top: 8px;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 32px;
+  }
 }
 
 .timelineContainer {
@@ -57,7 +63,7 @@
 
 .timelineRow {
   position: relative;
-  margin-bottom: 96px;
+  margin-bottom: 64px;
 }
 
 .timelineRow:last-child {
@@ -66,10 +72,15 @@
 
 @media (min-width: 768px) {
   .timelineRow {
+    margin-bottom: 96px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+  }
+
+  .timelineRow:last-child {
+    margin-bottom: 0;
   }
 
   .timelineRowReverse {

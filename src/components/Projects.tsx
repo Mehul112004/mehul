@@ -60,6 +60,7 @@ const PROJECTS_DATA: Project[] = [
 
 export function Projects() {
   const highlightedProjectIds = useLimelightStore((state) => state.highlightedProjectIds);
+  const setProjectDetailsOpen = useLimelightStore((state) => state.setProjectDetailsOpen);
   const [selectedProject, setSelectedProject] = useState<any | null>(null);
 
   const handleCardClick = (project: Project) => {
@@ -83,6 +84,7 @@ export function Projects() {
     };
     
     setSelectedProject(details);
+    setProjectDetailsOpen(true);
   };
 
   return (
@@ -153,7 +155,10 @@ export function Projects() {
       </div>
       <ProjectModal
         isOpen={selectedProject !== null}
-        onClose={() => setSelectedProject(null)}
+        onClose={() => {
+          setSelectedProject(null);
+          setProjectDetailsOpen(false);
+        }}
         project={selectedProject}
       />
     </section>

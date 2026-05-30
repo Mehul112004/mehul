@@ -66,15 +66,23 @@
   border: 1px solid var(--color-outline-variant);
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow-y: auto;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
   animation: modalScaleIn 0.6s cubic-bezier(0.19, 1, 0.22, 1) forwards;
   max-height: 90vh;
 }
 
+@media (max-width: 767px) {
+  .wrapper {
+    max-height: 85vh;
+    max-width: 100%;
+  }
+}
+
 @media (min-width: 768px) {
   .wrapper {
     flex-direction: row;
+    overflow: hidden;
   }
 }
 
@@ -107,24 +115,27 @@
 
 .aside {
   width: 100%;
-  border-b: 1px solid var(--color-outline-variant);
-  padding: 32px;
+  border-bottom: 1px solid var(--color-outline-variant);
+  padding: 24px 20px;
   background-color: var(--color-surface-container-lowest);
   position: relative;
   z-index: 10;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 24px;
   animation: paneSlideLeft 0.8s cubic-bezier(0.19, 1, 0.22, 1) 0.1s forwards;
   opacity: 0;
-  overflow-y: auto;
+  flex-shrink: 0;
 }
 
 @media (min-width: 768px) {
   .aside {
     width: 30%;
-    border-b: none;
+    padding: 32px;
+    gap: 32px;
+    border-bottom: none;
     border-right: 1px solid var(--color-outline-variant);
+    overflow-y: auto;
   }
 }
 
@@ -188,21 +199,22 @@
 
 .main {
   flex-grow: 1;
-  padding: 32px;
+  padding: 24px 20px;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 24px;
   position: relative;
   z-index: 10;
   animation: paneSlideRight 0.8s cubic-bezier(0.19, 1, 0.22, 1) 0.2s forwards;
   opacity: 0;
-  overflow-y: auto;
 }
 
 @media (min-width: 768px) {
   .main {
     padding: 48px;
+    gap: 32px;
     width: 70%;
+    overflow-y: auto;
   }
 }
 
@@ -212,15 +224,21 @@
 
 .companyTitle {
   font-family: var(--font-body);
-  font-size: 32px;
+  font-size: 24px;
   font-weight: 600;
   color: var(--color-primary);
   margin-bottom: 8px;
 }
 
+@media (min-width: 768px) {
+  .companyTitle {
+    font-size: 32px;
+  }
+}
+
 .roleSubtitle {
   font-family: var(--font-mono);
-  font-size: 14px;
+  font-size: 13px;
   color: var(--color-outline);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -254,24 +272,32 @@
 .workstreamGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 16px;
+  gap: 12px;
 }
 
 @media (min-width: 640px) {
   .workstreamGrid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
   }
 }
 
 .workstreamCard {
   background-color: var(--color-surface-container-low);
   border: 1px solid var(--color-outline-variant);
-  padding: 20px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 16px;
+  gap: 12px;
   transition: border-color 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+@media (min-width: 768px) {
+  .workstreamCard {
+    padding: 20px;
+    gap: 16px;
+  }
 }
 
 .workstreamCard:hover {
@@ -343,25 +369,39 @@
   background-color: var(--color-primary);
   color: var(--color-background);
   border: 1px solid var(--color-primary);
-  padding: 12px 32px;
+  padding: 10px 20px;
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
 }
 
+@media (min-width: 768px) {
+  .btnPrimary {
+    padding: 12px 32px;
+    font-size: 13px;
+  }
+}
+
 .btnSecondary {
   background-color: transparent;
   color: var(--color-primary);
   border: 1px solid var(--color-outline-variant);
-  padding: 12px 32px;
+  padding: 10px 20px;
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 12px;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .btnSecondary {
+    padding: 12px 32px;
+    font-size: 13px;
+  }
 }
 
 .hoverFillBtn {

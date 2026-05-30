@@ -12,8 +12,25 @@ import styles from './App.module.css';
 
 function App() {
   const isLimelightActive = useLimelightStore((state) => state.isLimelightActive);
+  const isChatbotOpen = useLimelightStore((state) => state.isChatbotOpen);
   const deactivateLimelight = useLimelightStore((state) => state.deactivateLimelight);
   const prevIsLimelightActive = useRef(isLimelightActive);
+
+  useEffect(() => {
+    if (isLimelightActive) {
+      document.body.classList.add('limelight-active');
+    } else {
+      document.body.classList.remove('limelight-active');
+    }
+  }, [isLimelightActive]);
+
+  useEffect(() => {
+    if (isChatbotOpen) {
+      document.body.classList.add('chatbot-open');
+    } else {
+      document.body.classList.remove('chatbot-open');
+    }
+  }, [isChatbotOpen]);
 
   useEffect(() => {
     // Parse pathname

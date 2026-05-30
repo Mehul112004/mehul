@@ -144,36 +144,28 @@ body {
 
 @media (max-width: 768px) {
   .project-highlight-active {
-    position: fixed !important;
-    top: 75px !important;
-    left: 50% !important;
-    transform: translate(-50%, 0) rotate(var(--highlight-rotate, 0deg)) scale(0.85) !important;
-    max-width: 90% !important;
-    width: 320px !important;
-    padding: 16px !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 20px !important;
     box-shadow: 0 0 40px rgba(255, 255, 255, 0.2) !important;
-    z-index: 95 !important;
+    z-index: 90 !important;
+    border-width: 2px !important;
+    margin-bottom: 12px !important;
   }
-  
-  .project-highlight-active[style*="--highlight-index"] {
-    top: calc(75px + var(--highlight-index, 0) * 12px) !important;
-    transform: translate(-50%, 0) rotate(calc(var(--highlight-rotate, 0deg) + var(--highlight-index, 0) * 2deg)) scale(calc(0.85 - var(--highlight-index, 0) * 0.04)) !important;
-    z-index: calc(95 - var(--highlight-index, 0)) !important;
-  }
-  
+
   .project-highlight-active[style*="--highlight-total: 1"] {
-    top: 75px !important;
-    max-width: 90% !important;
-    width: 320px !important;
-    transform: translate(-50%, 0) rotate(0deg) scale(0.85) !important;
-    z-index: 95 !important;
+    transform: none !important;
   }
 }
 
 @media (max-width: 480px) {
-  /* When limelight is active on mobile, shrink the terminal height to prevent overlap with top cards */
-  .limelight-backdrop-active ~ #ai-terminal {
-    height: 320px !important;
+  .project-highlight-active {
+    padding: 16px !important;
+    border-radius: 4px !important;
   }
 }
 
@@ -196,5 +188,130 @@ body {
   padding: 4px 12px;
   z-index: 20;
   transition: opacity 0.5s ease-in-out;
+}
+
+/* Layout overrides when both Limelight is active and the Chatbot is open to avoid overlaps */
+@media (min-width: 769px) {
+  /* For multiple highlighted elements, make them slightly smaller to fit side-by-side */
+  body.limelight-active.chatbot-open .project-highlight-active {
+    max-width: 340px !important;
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1) !important;
+  }
+
+  /* For a single highlighted element, it can be wider and positioned at 32% */
+  body.limelight-active.chatbot-open .project-highlight-active[style*="--highlight-total: 1"] {
+    left: 32% !important;
+    max-width: 520px !important;
+    transform: translate(-50%, -50%) rotate(0deg) scale(1.05) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* ALWAYS style highlighted elements as compact fixed banners on mobile */
+  .project-highlight-active {
+    position: fixed !important;
+    top: calc(16px + var(--highlight-index, 0) * 136px) !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: calc(100% - 32px) !important;
+    max-width: 480px !important;
+    min-height: auto !important;
+    height: 120px !important;
+    padding: 12px 16px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    border-radius: 6px !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    z-index: 105 !important;
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.3) !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* Hide description, version, and details list to form a compact banner */
+  .project-highlight-active [class*="projectDescription"],
+  .project-highlight-active [class*="version"],
+  .project-highlight-active [class*="detailList"] {
+    display: none !important;
+  }
+
+  /* Compact header margins and alignment */
+  .project-highlight-active [class*="cardHeader"] {
+    margin-bottom: 0 !important;
+    display: flex !important;
+    justify-content: flex-end !important; /* Float icon to the right */
+    align-items: center !important;
+    width: 100% !important;
+    height: 24px !important;
+  }
+
+  /* Style icon */
+  .project-highlight-active [class*="icon"] {
+    font-size: 20px !important;
+    color: var(--color-primary) !important;
+    margin-top: -4px !important;
+  }
+
+  /* Reduce title / company name font size */
+  .project-highlight-active [class*="projectTitle"],
+  .project-highlight-active [class*="companyName"] {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: var(--color-primary) !important;
+    margin-bottom: 4px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  /* Experience role title */
+  .project-highlight-active [class*="roleTitle"] {
+    font-size: 11px !important;
+    font-family: var(--font-mono) !important;
+    color: var(--color-outline) !important;
+    text-transform: uppercase !important;
+    margin-bottom: 8px !important;
+  }
+
+  /* Experience year mobile placement */
+  .project-highlight-active [class*="timelineYearMobile"] {
+    font-family: var(--font-mono) !important;
+    font-size: 11px !important;
+    color: var(--color-outline) !important;
+    position: absolute !important;
+    top: 12px !important;
+    right: 16px !important;
+  }
+
+  /* Compact tech tags spacing */
+  .project-highlight-active [class*="techTags"] {
+    display: flex !important;
+    gap: 4px !important;
+    flex-wrap: wrap !important;
+    margin-top: auto !important;
+    overflow: hidden !important;
+    max-height: 24px !important;
+  }
+
+  .project-highlight-active [class*="tag"],
+  .project-highlight-active [class*="stackTag"] {
+    font-size: 9px !important;
+    padding: 2px 6px !important;
+    border: 1px solid var(--color-outline-variant) !important;
+    background-color: rgba(255, 255, 255, 0.05) !important;
+  }
+
+  body.limelight-active.chatbot-open .ai-terminal {
+    position: fixed !important;
+    bottom: 16px !important;
+    left: 16px !important;
+    right: 16px !important;
+    width: calc(100% - 32px) !important;
+    height: 320px !important;
+    max-height: 42vh !important;
+    z-index: 105 !important;
+    transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1) !important;
+  }
 }
 

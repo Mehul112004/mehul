@@ -125,7 +125,8 @@ function getDonnaResponse(query: string): { response: string; highlightIds: stri
 }
 
 export function AIAssistant() {
-  const [isOpen, setIsOpen] = useState(false);
+  const isOpen = useLimelightStore((state) => state.isChatbotOpen);
+  const setIsOpen = useLimelightStore((state) => state.setChatbotOpen);
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [hasInitialized, setHasInitialized] = useState(false);
@@ -214,8 +215,10 @@ export function AIAssistant() {
   // Auto-load logic: Open terminal after 1000ms and run sequence
   useEffect(() => {
     const timer = setTimeout(() => {
-      setIsOpen(true);
-      runInitialSequence();
+      if (!useLimelightStore.getState().isProjectDetailsOpen) {
+        setIsOpen(true);
+        runInitialSequence();
+      }
     }, 1000);
     return () => clearTimeout(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -361,7 +364,7 @@ export function AIAssistant() {
 
       {/* AI Terminal Window */}
       {isOpen && (
-        <div className={styles.terminal} id="ai-terminal" style={{ zIndex: 100 }}>
+        <div className={`${styles.terminal} ai-terminal`} id="ai-terminal" style={{ zIndex: 100 }}>
           {/* Header */}
           <div className={styles.terminalHeader}>
             <span className={styles.terminalTitle}>
