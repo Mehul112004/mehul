@@ -3,6 +3,14 @@ import type { KeyboardEvent } from 'react';
 import styles from './AIAssistant.module.css';
 import { useLimelightStore } from '../store/useLimelightStore';
 
+const labelMessages = [
+  "Ask me about Mehul?",
+  "Check out my projects",
+  "Learn about my stack",
+  "View architecture logs",
+  "Inquire about expertise"
+];
+
 interface Message {
   id: string;
   sender: 'SYSTEM' | 'USER' | 'DONNA';
@@ -120,6 +128,8 @@ export function AIAssistant() {
   const [inputValue, setInputValue] = useState('');
   const [hasInitialized, setHasInitialized] = useState(false);
   const [currentlyTypingId, setCurrentlyTypingId] = useState<string | null>(null);
+  const [labelMessage, setLabelMessage] = useState('Ask me about Mehul?');
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const outputRef = useRef<HTMLDivElement>(null);
@@ -185,6 +195,49 @@ export function AIAssistant() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Chatbot capabilities label cycle
+  useEffect(() => {
+    if (isOpen) {
+      setIsExpanded(false);
+      return;
+    }
+
+    const initialDelay = setTimeout(() => {
+      let currentIndex = 0;
+      let isCancelled = false;
+
+      const runCycle = async () => {
+        if (isCancelled) return;
+
+        setLabelMessage(labelMessages[currentIndex]);
+        setIsExpanded(true);
+
+        // Hold for 3s so the user has more time to notice and read it
+        await new Promise((resolve) => setTimeout(resolve, 3000));
+        if (isCancelled) return;
+
+        setIsExpanded(false);
+
+        // Wait for transition to finish (400ms) + 4s pause = 4400ms
+        await new Promise((resolve) => setTimeout(resolve, 4400));
+        if (isCancelled) return;
+
+        currentIndex = (currentIndex + 1) % labelMessages.length;
+        runCycle();
+      };
+
+      runCycle();
+
+      return () => {
+        isCancelled = true;
+      };
+    }, 3000); // Start cycling after 3 seconds initial delay
+
+    return () => {
+      clearTimeout(initialDelay);
+    };
+  }, [isOpen]);
+
   // Focus input when terminal opens
   useEffect(() => {
     if (isOpen) {
@@ -227,16 +280,28 @@ export function AIAssistant() {
 
   return (
     <>
-      {/* AI Trigger Button */}
-      <div 
-        className={styles.trigger} 
-        id="ai-trigger"
-        onClick={toggleTerminal}
-        style={{ zIndex: 110 }} // Ensure it's above the backdrop
-      >
-        <span className={`material-symbols-outlined ${styles.triggerIcon}`}>
-          cognition
-        </span>
+      {/* Floating AI Assistant Container */}
+      <div className={styles.assistantContainer} style={{ zIndex: 110 }}>
+        {/* Collapsible Label */}
+        <div 
+          className={`${styles.labelPill} ${isExpanded ? styles.expanded : ''}`} 
+          id="ai-label-pill"
+        >
+          <span className={styles.labelText} id="ai-label-text">
+            {labelMessage}
+          </span>
+        </div>
+
+        {/* AI Assistant Donna Trigger */}
+        <div 
+          className={styles.trigger} 
+          id="ai-trigger"
+          onClick={toggleTerminal}
+        >
+          <span className={`material-symbols-outlined ${styles.triggerIcon}`}>
+            cognition
+          </span>
+        </div>
       </div>
 
       {/* AI Terminal Window */}
