@@ -56,7 +56,7 @@ export const getSeededRandom = (seedStr: string, min: number, max: number): numb
   return min + scaled * (max - min);
 };
 
-export const getHighlightStyle = (id: string, index: number, total: number) => {
+export const getHighlightStyle = (_id: string, index: number, total: number) => {
   if (index === -1) return undefined;
   
   const isChatbotOpen = useLimelightStore.getState().isChatbotOpen;

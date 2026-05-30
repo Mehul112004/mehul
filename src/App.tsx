@@ -113,12 +113,6 @@ function App() {
       const lastSegment = pathSegments[pathSegments.length - 1]?.toLowerCase();
       
       const searchParams = new URLSearchParams(window.location.search);
-      const queryId = (
-        searchParams.get('project') ||
-        searchParams.get('id') ||
-        searchParams.get('highlight') ||
-        searchParams.get('limelight')
-      )?.toLowerCase();
 
       const urlToLimelightId: Record<string, string> = {
         c_helper: 'c_helper', crypto: 'c_helper', crypto_platform: 'c_helper',
