@@ -13,6 +13,7 @@ import styles from './App.module.css';
 function App() {
   const isLimelightActive = useLimelightStore((state) => state.isLimelightActive);
   const isChatbotOpen = useLimelightStore((state) => state.isChatbotOpen);
+  const isProjectDetailsOpen = useLimelightStore((state) => state.isProjectDetailsOpen);
   const deactivateLimelight = useLimelightStore((state) => state.deactivateLimelight);
   const prevIsLimelightActive = useRef(isLimelightActive);
 
@@ -31,6 +32,14 @@ function App() {
       document.body.classList.remove('chatbot-open');
     }
   }, [isChatbotOpen]);
+
+  useEffect(() => {
+    if (isProjectDetailsOpen) {
+      document.body.classList.add('project-details-open');
+    } else {
+      document.body.classList.remove('project-details-open');
+    }
+  }, [isProjectDetailsOpen]);
 
   useEffect(() => {
     // Parse pathname
