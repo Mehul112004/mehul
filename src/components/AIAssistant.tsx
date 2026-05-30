@@ -118,7 +118,7 @@ export function AIAssistant() {
       console.log('[Limelight Debug] Chatbot running default introductory sequence.');
       await typeMessage(
         'DONNA',
-        "DONNA online. I am your AI architect assistant. Ask me anything about Mehul's project architectures, tech stacks, or professional experience, and I will query his portfolio index to guide you.",
+        "DONNA online. I am your AI assistant. Ask me anything about Mehul's project architectures, tech stacks, or professional experience, and I will query his portfolio index to guide you.",
         25
       );
     }
@@ -280,7 +280,7 @@ export function AIAssistant() {
           {/* Header */}
           <div className={styles.terminalHeader}>
             <span className={styles.terminalTitle}>
-              DONNA_v1.0.2 // ARCHITECT_ASSISTANT
+              DONNA_v1.0.2 // AI_ASSISTANT
             </span>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <div 
