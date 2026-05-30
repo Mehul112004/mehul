@@ -59,12 +59,17 @@
 
 .ctaContainer {
   padding-top: 32px;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .ctaButton {
   display: inline-block;
   border: 1px solid var(--color-outline-variant);
-  padding: 16px 48px;
+  padding: 16px 40px;
   font-family: var(--font-mono);
   font-size: 13px;
   font-weight: 500;
@@ -72,10 +77,25 @@
   text-decoration: none;
   color: var(--color-on-surface);
   border-radius: 0px;
-  transition: border-color 0.2s ease-in-out;
+  transition: all 0.25s ease-in-out;
   cursor: pointer;
+  background: transparent;
 }
 
 .ctaButton:hover {
   border-color: var(--color-primary);
 }
+
+.ctaButtonPrimary {
+  background-color: var(--color-primary);
+  color: var(--color-background);
+  border: 1px solid var(--color-primary);
+  font-weight: 700;
+}
+
+.ctaButtonPrimary:hover {
+  background-color: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+

@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import styles from './ProjectModal.module.css';
+import { useState, useEffect } from "react";
+import styles from "./ProjectModal.module.css";
 
 interface ProjectDetails {
   id: string;
@@ -30,15 +30,23 @@ interface Particle {
   delay: number;
 }
 
-function TypewriterText({ text, speed = 40 }: { text: string; speed?: number }) {
-  const [displayed, setDisplayed] = useState('');
+function TypewriterText({
+  text,
+  speed = 40,
+}: {
+  text: string;
+  speed?: number;
+}) {
+  const [displayed, setDisplayed] = useState("");
 
   useEffect(() => {
-    setDisplayed('');
+    setDisplayed("");
+    let currentText = "";
     let i = 0;
     const interval = setInterval(() => {
       if (i < text.length) {
-        setDisplayed((prev) => prev + text.charAt(i));
+        currentText += text.charAt(i);
+        setDisplayed(currentText);
         i++;
       } else {
         clearInterval(interval);
@@ -57,27 +65,27 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
   // Body scroll lock
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     }
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     };
   }, [isOpen]);
 
   // Escape key handler
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
+      if (e.key === "Escape") {
         onClose();
       }
     };
     if (isOpen) {
-      window.addEventListener('keydown', handleKeyDown);
+      window.addEventListener("keydown", handleKeyDown);
     }
     return () => {
-      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener("keydown", handleKeyDown);
     };
   }, [isOpen, onClose]);
 
@@ -106,7 +114,11 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
   };
 
   return (
-    <div className={styles.overlay} onClick={handleOverlayClick} id="project-modal">
+    <div
+      className={styles.overlay}
+      onClick={handleOverlayClick}
+      id="project-modal"
+    >
       {/* Background/Backdrop Overlay */}
       <div className={styles.backdrop}>
         {/* Grid Overlay */}
@@ -131,15 +143,21 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
       {/* Modal Content Wrapper */}
       <div className={styles.wrapper}>
         {/* Close Button */}
-        <button className={styles.closeBtn} onClick={onClose} aria-label="Close modal">
-          <span className={`material-symbols-outlined ${styles.closeIcon}`}>close</span>
+        <button
+          className={styles.closeBtn}
+          onClick={onClose}
+          aria-label="Close modal"
+        >
+          <span className={`material-symbols-outlined ${styles.closeIcon}`}>
+            close
+          </span>
         </button>
 
         {/* Sidebar/Aside Pane */}
         <aside className={styles.aside}>
           <div>
             <h3 className={styles.metaSectionTitle}>
-              <TypewriterText text="Metadata" />
+              <TypewriterText text="METADATA" />
             </h3>
             <div className={styles.metaInfoList}>
               <div>
@@ -148,7 +166,9 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
               </div>
               <div>
                 <span className={styles.metaItemLabel}>Status</span>
-                <span className={`${styles.metaItemValue} ${styles.statusActive}`}>
+                <span
+                  className={`${styles.metaItemValue} ${styles.statusActive}`}
+                >
                   {project.status}
                 </span>
               </div>
@@ -181,7 +201,9 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
         <main className={styles.main}>
           <div>
             <h2 className={styles.projectTitle}>{project.title}</h2>
-            <p className={styles.projectDescription}>{project.longDescription}</p>
+            <p className={styles.projectDescription}>
+              {project.longDescription}
+            </p>
           </div>
 
           {/* Action Buttons */}
@@ -198,7 +220,7 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
             ) : (
               <span
                 className={styles.btnPrimary}
-                style={{ opacity: 0.4, cursor: 'not-allowed' }}
+                style={{ opacity: 0.4, cursor: "not-allowed" }}
                 title="NDA Restricted or Local Environment Only"
               >
                 LOCAL RUN ONLY
@@ -217,7 +239,7 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
             ) : (
               <span
                 className={styles.btnSecondary}
-                style={{ opacity: 0.4, cursor: 'not-allowed' }}
+                style={{ opacity: 0.4, cursor: "not-allowed" }}
                 title="Private Repository"
               >
                 PRIVATE REPOSITORY

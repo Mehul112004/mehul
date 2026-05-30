@@ -41,10 +41,12 @@ function TypewriterText({ text, speed = 40 }: { text: string; speed?: number }) 
 
   useEffect(() => {
     setDisplayed('');
+    let currentText = '';
     let i = 0;
     const interval = setInterval(() => {
       if (i < text.length) {
-        setDisplayed((prev) => prev + text.charAt(i));
+        currentText += text.charAt(i);
+        setDisplayed(currentText);
         i++;
       } else {
         clearInterval(interval);

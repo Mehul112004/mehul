@@ -1,7 +1,10 @@
-
 import styles from './Hero.module.css';
 
-export function Hero() {
+interface HeroProps {
+  onViewResume: () => void;
+}
+
+export function Hero({ onViewResume }: HeroProps) {
   return (
     <section className={styles.hero}>
       <div className={styles.container}>
@@ -16,6 +19,9 @@ export function Hero() {
         </p>
         
         <div className={styles.ctaContainer}>
+          <button onClick={onViewResume} className={`${styles.ctaButton} ${styles.ctaButtonPrimary}`}>
+            VIEW_RESUME
+          </button>
           <a href="#projects" className={styles.ctaButton}>
             VIEW_REPOSITORIES
           </a>
@@ -24,3 +30,4 @@ export function Hero() {
     </section>
   );
 }
+
